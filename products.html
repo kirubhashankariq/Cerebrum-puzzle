@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>CEREBRUM & CO. | Specialty Puzzle Catalog & Brain Games</title>
+  <meta name="description" content="Explore our full collection of mechanical puzzles, cast metal burrs, wooden trick boxes, and competition polyhedra filterable by difficulty." />
+  
+  <!-- Anti-Splash / Zero-Flash Theme Initialization Script (Synchronous Blocking Execution in Head) -->
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('cerebrum_theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = theme ? theme === 'dark' : prefersDark;
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.style.backgroundColor = '#0B0F19';
+          document.documentElement.style.colorScheme = 'dark';
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.style.backgroundColor = '#FFFFFF';
+          document.documentElement.style.colorScheme = 'light';
+        }
+        var dir = localStorage.getItem('cerebrum_direction') || 'ltr';
+        document.documentElement.setAttribute('dir', dir);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Anti-Splash Instant Style Fallback -->
+  <style>
+    html {
+      background-color: #FFFFFF;
+      color-scheme: light;
+    }
+    html.dark {
+      background-color: #0B0F19 !important;
+      color-scheme: dark;
+    }
+    html.dark body {
+      background-color: #0B0F19 !important;
+    }
+  </style>
+
+  <!-- Puzzle / Brain Themed Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23D97706' d='M10 2a3 3 0 0 0-3 3v3H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h3v4a2 2 0 0 0 2 2h4v-3a3 3 0 1 1 6 0v3h4a2 2 0 0 0 2-2v-4h3a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-3V5a2 2 0 0 0-2-2h-4v3a3 3 0 1 1-6 0V2z'/%3E%3C/svg%3E" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              primary: '#0F172A',
+              accent: '#D97706',
+              accentHover: '#B45309'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Project High-Contrast Flat Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-theme-primary text-slate-800 dark:text-slate-200 antialiased selection:bg-amber-600 selection:text-white">
+
+  <!-- ==========================================================================
+       GLOBAL NAVBAR (Identical across all 5 pages)
+       Desktop > 1024px. Strictly Hamburger < 1024px.
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 bg-theme-primary border-b border-theme shadow-sm transition-colors duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Brand Logo & Name -->
+        <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none min-w-0" aria-label="Cerebrum & Co. Home">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-black text-lg sm:text-xl border border-slate-900 dark:border-amber-400 flex-shrink-0">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z"/>
+            </svg>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="text-base xl:text-xl font-extrabold tracking-wider text-slate-900 dark:text-slate-50 uppercase truncate">CEREBRUM</span>
+            <span class="text-[9px] xl:text-[10px] tracking-widest font-semibold uppercase text-slate-500 dark:text-slate-400 -mt-1 hidden xl:block">Puzzle Specialty Store</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation (> 1024px) -->
+        <nav class="hidden lg:flex items-center gap-3 lg:gap-4 xl:gap-7" aria-label="Main Navigation">
+          <a href="index.html" class="nav-link-item whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent">Signature</a>
+          <a href="home-2.html" class="nav-link-item whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent">Collector Vault</a>
+          <a href="products.html" class="nav-link-item active whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent" aria-current="page">Products</a>
+          <a href="custom-puzzle.html" class="nav-link-item whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent">Custom Puzzle</a>
+          <a href="contact.html" class="nav-link-item whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent">Contact</a>
+        </nav>
+
+        <!-- Desktop Utilities & CTA (> 1024px) -->
+        <div class="hidden lg:flex items-center gap-2 xl:gap-3">
+          <!-- RTL / LTR Toggle with Double Arrow Icon -->
+          <button class="rtl-toggle-btn p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Direction (RTL / LTR)" aria-label="Toggle Direction (RTL / LTR)">
+            <svg class="w-5 h-5 rtl-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+            </svg>
+          </button>
+
+          <!-- Dark / Light Theme Toggle -->
+          <button class="theme-toggle-btn p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+            <svg class="icon-sun w-5 h-5 hidden text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg class="icon-moon w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+
+          <!-- Cart Drawer Button -->
+          <button class="open-cart-btn relative p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Open Puzzle Trunk Cart" aria-label="Open Puzzle Trunk Cart">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="cart-count-badge absolute -top-1.5 -right-1.5 bg-amber-600 text-white font-black text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+          </button>
+
+          <!-- CTA Button -->
+          <a href="products.html" class="btn-primary !py-2 !px-3.5 xl:!py-2.5 xl:!px-5 text-xs xl:text-sm whitespace-nowrap">
+            <span>Shop Now</span>
+          </a>
+        </div>
+
+        <!-- Mobile Controls (< 1024px) - Same web options on mobile -->
+        <div class="flex items-center gap-1.5 sm:gap-2 lg:hidden">
+          <!-- Mobile RTL Toggle with Double Arrow Icon -->
+          <button class="rtl-toggle-btn p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Direction (RTL / LTR)" aria-label="Toggle Direction (RTL / LTR)">
+            <svg class="w-4 h-4 rtl-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+            </svg>
+          </button>
+
+          <!-- Mobile Dark/Light Theme Toggle -->
+          <button class="theme-toggle-btn p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+            <svg class="icon-sun w-4 h-4 hidden text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg class="icon-moon w-4 h-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+
+          <!-- Mobile Cart Button -->
+          <button class="open-cart-btn relative p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" aria-label="Open Cart" title="Open Cart">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="cart-count-badge absolute -top-1.5 -right-1.5 bg-amber-600 text-white font-black text-[10px] w-4.5 h-4.5 min-w-[18px] flex items-center justify-center rounded-full">0</span>
+          </button>
+          
+          <!-- Mobile Hamburger Menu Button -->
+          <button id="mobile-menu-toggle" class="p-2 border border-theme text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" aria-label="Open Mobile Menu" title="Open Mobile Menu">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Overlay (< 1024px) -->
+    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden lg:hidden"></div>
+    <div id="mobile-menu-drawer" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-theme-primary border-l border-theme z-50 p-6 flex flex-col justify-between hidden lg:hidden overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-theme">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-bold text-lg">C</div>
+            <span class="font-extrabold tracking-wider text-slate-900 dark:text-slate-50 uppercase">CEREBRUM</span>
+          </div>
+          <button id="mobile-menu-close" class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-slate-100" aria-label="Close Mobile Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <nav class="flex flex-col gap-4 py-6" aria-label="Mobile Navigation Links">
+          <a href="index.html" class="nav-link-item text-base font-bold uppercase tracking-wide text-slate-800 dark:text-slate-200 hover:text-amber-600 py-1">Signature</a>
+          <a href="home-2.html" class="nav-link-item text-base font-bold uppercase tracking-wide text-slate-800 dark:text-slate-200 hover:text-amber-600 py-1">Collector Vault</a>
+          <a href="products.html" class="nav-link-item active text-base font-bold uppercase tracking-wide text-slate-800 dark:text-slate-200 hover:text-amber-600 py-1" aria-current="page">Products</a>
+          <a href="custom-puzzle.html" class="nav-link-item text-base font-bold uppercase tracking-wide text-slate-800 dark:text-slate-200 hover:text-amber-600 py-1">Custom Puzzle</a>
+          <a href="contact.html" class="nav-link-item text-base font-bold uppercase tracking-wide text-slate-800 dark:text-slate-200 hover:text-amber-600 py-1">Contact</a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-theme flex flex-col gap-4">
+        <div class="flex items-center justify-between gap-3">
+          <button class="rtl-toggle-btn flex-1 py-2.5 border border-theme text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 rtl-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+            <span>Direction: <span class="rtl-label">RTL</span></span>
+          </button>
+          <button class="theme-toggle-btn flex-1 py-2.5 border border-theme text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+            <span>Theme: <span class="theme-label">Dark</span></span>
+          </button>
+        </div>
+        <a href="products.html" class="btn-primary w-full text-center">
+          <span>Shop Now</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       SECTION 1: HERO BANNER & SEARCH
+       High-contrast overlay ensuring 100% text legibility in both modes
+       ========================================================================== -->
+  <section class="hero-wrapper min-h-[380px] flex items-center border-b border-theme" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1600&q=80');">
+    <div class="hero-scrim absolute inset-0"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-600/10 dark:bg-amber-400/10 border border-amber-600 dark:border-amber-400 mb-4">
+          <span class="text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300">Catalog Registry • 10 Cognitive Tiers</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-4">
+          The Master Puzzle Compendium.
+        </h1>
+        <p class="section-subtitle text-base sm:text-lg mb-8 leading-relaxed font-normal">
+          Filter by difficulty tier to match your solving threshold. From introductory Soma dissection blocks to relentless Level 10 blind internal mazes.
+        </p>
+
+        <!-- Real-Time Search Bar -->
+        <div class="relative max-w-xl">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <input 
+            type="text" 
+            id="product-search-input"
+            placeholder="Search by puzzle name, mechanism, or alloy material (e.g., 'Brass', 'Hakone', 'Burr')..." 
+            class="form-input pl-11 py-3 text-sm"
+            aria-label="Search puzzle collection"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: FILTER & CONTROLS TOOLBAR
+       Difficulty Level Filter Tabs & Sort Selection
+       ========================================================================== -->
+  <section class="py-4 sm:py-6 bg-theme-secondary border-b border-theme sticky top-16 sm:top-20 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        
+        <!-- Difficulty Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 w-full md:w-auto" role="tablist" aria-label="Filter puzzles by difficulty">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500 mr-2 hidden sm:inline">Tier:</span>
+          <button class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 border border-theme text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-colors" data-filter="All">All Tiers</button>
+          <button class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 border border-theme text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-colors" data-filter="Easy">Easy (Lvl 1-3)</button>
+          <button class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 border border-theme text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-colors" data-filter="Medium">Medium (Lvl 4-6)</button>
+          <button class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 border border-theme text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-colors" data-filter="Hard">Hard (Lvl 7-8)</button>
+          <button class="filter-btn px-3 sm:px-4 py-1.5 sm:py-2 border border-theme text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-colors" data-filter="Master">Master (Lvl 9-10)</button>
+        </div>
+
+        <!-- Sort Select & Results Counter -->
+        <div class="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto">
+          <span id="products-count" class="text-xs font-semibold text-slate-500">Showing 12 of 12 Specialty Puzzles</span>
+          <div class="flex items-center gap-2">
+            <label for="product-sort-select" class="text-xs font-bold text-slate-500 uppercase tracking-wider">Sort:</label>
+            <select id="product-sort-select" class="p-2 bg-theme-primary border border-theme text-xs font-semibold rounded-none focus:outline-none focus:border-amber-600">
+              <option value="featured">Featured Curations</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="difficulty">Difficulty: Low to High</option>
+              <option value="rating">Highest Solver Rating</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: MAIN PRODUCT CATALOG GRID
+       Vanilla JS Driven Dynamic Grid (12 Items) + Specs Quick-View Modal
+       ========================================================================== -->
+  <section class="py-16 bg-theme-primary border-b border-theme min-h-[600px]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Rendered by js/products.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick View Modal Component -->
+  <div id="quick-view-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-label="Puzzle Detailed Specifications">
+    <div class="modal-content !max-w-3xl">
+      <div class="p-4 border-b border-theme flex items-center justify-between">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Technical Blueprint & Specifications</span>
+        <button id="quick-view-close" class="text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 text-2xl leading-none">&times;</button>
+      </div>
+      <div id="quick-view-content"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SECTION 4: COMPREHENSIVE DIFFICULTY TIER BREAKDOWN
+       Technical Reference Matrix
+       ========================================================================== -->
+  <section class="py-16 bg-theme-secondary border-b border-theme">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 block mb-2">Scientific Hierarchy</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold mb-3">Understanding Difficulty Tiers</h2>
+        <p class="section-subtitle text-xs sm:text-sm leading-relaxed">
+          How our curatorial board benchmarks mechanical puzzles to prevent solver discouragement.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto border border-theme bg-theme-primary">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-theme-secondary border-b border-theme text-slate-600 dark:text-slate-400 uppercase font-bold tracking-wider">
+            <tr>
+              <th class="p-4">Tier Name</th>
+              <th class="p-4">Levels</th>
+              <th class="p-4">Expected Solve Window</th>
+              <th class="p-4">Internal Mechanism Archetype</th>
+              <th class="p-4">Recommended For</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-theme">
+            <tr>
+              <td class="p-4 font-bold text-emerald-700 dark:text-emerald-400">Easy (Novice)</td>
+              <td class="p-4 font-mono font-bold">1 – 3</td>
+              <td class="p-4">10 – 30 Minutes</td>
+              <td class="p-4 text-slate-500">Planar dissection, 4-piece coordinate assemblies, basic 3D cubes</td>
+              <td class="p-4">Younger solvers, beginners, relaxed desk conversation pieces</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-blue-700 dark:text-blue-400">Medium (Adept)</td>
+              <td class="p-4 font-mono font-bold">4 – 6</td>
+              <td class="p-4">1 – 3 Hours</td>
+              <td class="p-4 text-slate-500">Sequential slide tracks, tumbling cipher tumblers, rotational gyros</td>
+              <td class="p-4">Enthusiasts, spatial hobbyists, team brainstorming warm-ups</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-orange-700 dark:text-orange-400">Hard (Master)</td>
+              <td class="p-4 font-mono font-bold">7 – 8</td>
+              <td class="p-4">4 – 10 Hours</td>
+              <td class="p-4 text-slate-500">Cast spiral disentanglement, hidden ball pins, 72-move trick boxes</td>
+              <td class="p-4">Experienced collectors, mathematicians, rigorous problem solvers</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-rose-700 dark:text-rose-400">Master (Grandmaster)</td>
+              <td class="p-4 font-mono font-bold">9 – 10</td>
+              <td class="p-4">20 – 60+ Hours</td>
+              <td class="p-4 text-slate-500">Blind internal labyrinths, non-euclidean mazes, titanium burrs</td>
+              <td class="p-4">Mensa medalists, unassisted world record pursuers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 5: CURATED PUZZLE BUNDLES & GIFT SETS
+       Dual Bundle Showcase with Immediate Cart Action
+       ========================================================================== -->
+  <section class="py-20 bg-theme-primary border-b border-theme">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 block mb-2">Curated Gift Sets</span>
+          <h2 class="text-3xl font-extrabold">Complete Solver Progression Trunks</h2>
+        </div>
+        <p class="section-subtitle max-w-md text-xs sm:text-sm mt-3 md:mt-0">
+          Save up to 25% on harmonized multi-puzzle collections packaged in heirloom presentation chests.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Bundle 1 -->
+        <article class="flat-card p-6 flex flex-col sm:flex-row gap-6 items-center">
+          <div class="w-full sm:w-1/2 aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800 border border-theme flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="The Novice-to-Pro Progression Trunk" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex-1 flex flex-col justify-between h-full">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 bg-emerald-700 text-white font-bold text-[10px] uppercase">Save $38</span>
+                <span class="text-xs text-slate-400">3 Puzzles Included</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">The Novice-to-Pro Progression Trunk</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Contains Soma Cube (Lvl 2), Vortex Cast Zinc (Lvl 5), and Hanayama Enigma (Lvl 8). The definitive curriculum for escalating your spatial IQ.
+              </p>
+              <div class="text-xs space-y-1 mb-4 text-slate-500">
+                <div>• Walnut storage caddy included</div>
+                <div>• Detailed hints booklet sealed in envelope</div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-theme">
+              <div>
+                <span class="text-xs text-slate-400 line-through mr-1">$138.00</span>
+                <span class="text-2xl font-bold text-slate-900 dark:text-slate-100">$99.00</span>
+              </div>
+              <button onclick="window.addToCartFromCard(this, 'bundle-01', 'The Novice-to-Pro Progression Trunk', 99.00, 'Hard')" class="btn-primary !py-2 !px-4 text-xs">
+                Add Bundle
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bundle 2 -->
+        <article class="flat-card p-6 flex flex-col sm:flex-row gap-6 items-center">
+          <div class="w-full sm:w-1/2 aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800 border border-theme flex-shrink-0">
+            <img src="https://i.pinimg.com/736x/60/c0/c7/60c0c7ce07eac1943d715f3afa33a2db.jpg" alt="The Mensa Grandmaster Collector Set" class="w-full h-full object-cover" />
+          </div>
+          <div class="flex-1 flex flex-col justify-between h-full">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 bg-amber-600 text-white font-bold text-[10px] uppercase">Save $95</span>
+                <span class="text-xs text-slate-400">Elite Series</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">The Mensa Grandmaster Collector Set</h3>
+              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                Comprises Revomaze V1 Brass (Lvl 10), Karakuri 72-Step Box (Lvl 7), and Isis Discovery Sphere (Lvl 9). The pinnacle of mechanical teasers.
+              </p>
+              <div class="text-xs space-y-1 mb-4 text-slate-500">
+                <div>• Leather-bound registry ledger included</div>
+                <div>• Direct concierge verification access</div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-theme">
+              <div>
+                <span class="text-xs text-slate-400 line-through mr-1">$640.00</span>
+                <span class="text-2xl font-bold text-slate-900 dark:text-slate-100">$545.00</span>
+              </div>
+              <button onclick="window.addToCartFromCard(this, 'bundle-02', 'The Mensa Grandmaster Collector Set', 545.00, 'Master')" class="btn-primary !py-2 !px-4 text-xs">
+                Add Bundle
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: SOLVERS GUARANTEE & LIFETIME SUPPORT
+       Assurance Policy & Concierge Standards
+       ========================================================================== -->
+  <section class="py-16 bg-theme-secondary border-b border-theme">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="p-6 bg-theme-primary border border-theme">
+          <div class="w-10 h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-bold text-base mb-4">01</div>
+          <h3 class="text-base font-bold mb-2">Zero Lost Piece Clause</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            If a mechanical pin, ball-bearing, or jigsaw segment ever vanishes, register your item number for a complimentary precision replacement.
+          </p>
+        </div>
+
+        <div class="p-6 bg-theme-primary border border-theme">
+          <div class="w-10 h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-bold text-base mb-4">02</div>
+          <h3 class="text-base font-bold mb-2">Cryptic Progressive Clues</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Never look up full solutions that ruin the mystery. Access our progressive hint portal with subtle directional nudges to keep you in flow.
+          </p>
+        </div>
+
+        <div class="p-6 bg-theme-primary border border-theme">
+          <div class="w-10 h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-bold text-base mb-4">03</div>
+          <h3 class="text-base font-bold mb-2">Purity of Materials</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Every product is backed by a 10-year mechanical integrity warranty against metal fatigue, gear stripping, and timber delamination.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       GLOBAL FOOTER (Identical across all 5 pages)
+       Links back to index.html + Social icons (X, Instagram, LinkedIn, etc.)
+       ========================================================================== -->
+  <footer class="bg-theme-primary border-t border-theme py-16 text-slate-600 dark:text-slate-400 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        
+        <!-- Brand Column -->
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-3 group mb-4 inline-flex focus:outline-none" aria-label="Return to Cerebrum Home">
+            <div class="w-10 h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-black text-xl border border-slate-900 dark:border-amber-400">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z"/>
+              </svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xl font-extrabold tracking-wider text-slate-900 dark:text-slate-50 uppercase">CEREBRUM</span>
+              <span class="text-[10px] tracking-widest font-semibold uppercase text-slate-500 dark:text-slate-400 -mt-1">Puzzle Specialty Store</span>
+            </div>
+          </a>
+          <p class="text-xs leading-relaxed max-w-sm mb-6 text-slate-500 dark:text-slate-400">
+            Cerebrum & Co. is the premier destination for serious puzzle solvers, mechanical teaser collectors, and discerning gift seekers worldwide.
+          </p>
+          <!-- Social Icons (X, Instagram, LinkedIn) -->
+          <div class="flex items-center gap-3">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 border border-theme flex items-center justify-center hover:bg-slate-900 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 transition-colors" aria-label="Follow Cerebrum on X">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 border border-theme flex items-center justify-center hover:bg-slate-900 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 transition-colors" aria-label="Follow Cerebrum on Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 border border-theme flex items-center justify-center hover:bg-slate-900 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 transition-colors" aria-label="Follow Cerebrum on LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Column 1 -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Site Architecture</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-amber-600 transition-colors">Signature Collection</a></li>
+            <li><a href="home-2.html" class="hover:text-amber-600 transition-colors">Collector Vault</a></li>
+            <li><a href="products.html" class="hover:text-amber-600 transition-colors">Complete Catalog</a></li>
+            <li><a href="custom-puzzle.html" class="hover:text-amber-600 transition-colors">Custom Puzzle Atelier</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Concierge & Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Column 2 -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Specialty Niches</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="products.html" class="hover:text-amber-600 transition-colors">Cast Metal Burrs</a></li>
+            <li><a href="products.html" class="hover:text-amber-600 transition-colors">Japanese Yosegi Boxes</a></li>
+            <li><a href="products.html" class="hover:text-amber-600 transition-colors">Speed Cubes & Dodecahedra</a></li>
+            <li><a href="products.html" class="hover:text-amber-600 transition-colors">Blind Mechanical Mazes</a></li>
+            <li><a href="custom-puzzle.html" class="hover:text-amber-600 transition-colors">Laser-Cut Wood Puzzles</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Column 3 -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Concierge & Guarantee</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Lost Piece Replacement</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Cryptic Solution Vault</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Flagship Store Location</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Corporate Team Trunks</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Wholesale & Museum Orders</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-theme flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <p>© 2026 CEREBRUM & CO. All Rights Reserved. Master Puzzle Craftsmen.</p>
+        <div class="flex items-center gap-6">
+          <span class="hover:underline cursor-pointer">Privacy Charter</span>
+          <span class="hover:underline cursor-pointer">Terms of Commission</span>
+          <span class="hover:underline cursor-pointer">Precision Guarantee</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Over / Full Checkout Modal -->
+  <div id="cart-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="cart-modal-heading">
+    <div class="modal-content !max-w-2xl w-full my-4">
+      
+      <!-- Modal Header with Step Indicators -->
+      <div class="p-4 sm:p-5 border-b border-theme flex items-center justify-between bg-theme-primary">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 bg-amber-600 text-white flex items-center justify-center text-xs font-bold">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          </div>
+          <h3 id="cart-modal-heading" class="text-base sm:lg font-bold">Collection Trunk & Secure Checkout</h3>
+        </div>
+        <button id="cart-modal-close" class="p-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 text-2xl leading-none" aria-label="Close Cart">&times;</button>
+      </div>
+
+      <!-- Step Indicator Bar -->
+      <div id="checkout-steps-bar" class="grid grid-cols-3 border-b border-theme text-[11px] font-bold uppercase tracking-wider text-center bg-theme-secondary">
+        <div id="step-tab-1" class="py-2.5 border-b-2 border-amber-600 text-amber-700 dark:text-amber-400 font-extrabold">1. Items (<span class="cart-count-badge">0</span>)</div>
+        <div id="step-tab-2" class="py-2.5 border-b-2 border-transparent text-slate-400">2. Shipping & Payment</div>
+        <div id="step-tab-3" class="py-2.5 border-b-2 border-transparent text-slate-400">3. Confirmation</div>
+      </div>
+
+      <!-- STEP 1: CART ITEMS VIEW -->
+      <div id="cart-step-items" class="p-4 sm:p-6 space-y-4">
+        <div id="cart-modal-items" class="max-h-[40vh] sm:max-h-[45vh] overflow-y-auto divide-y divide-theme pr-1"></div>
+        <div class="pt-3 border-t border-theme flex flex-col sm:flex-row gap-2">
+          <input type="text" id="cart-promo-input" placeholder="VIP Riddle / Promo code (e.g. CEREBRUM15)" class="form-input text-xs py-2 uppercase" />
+          <button id="cart-promo-apply-btn" class="px-4 py-2 border border-theme text-xs font-bold uppercase tracking-wider hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0">Apply Code</button>
+        </div>
+        <div class="p-4 bg-theme-secondary border border-theme space-y-2 text-xs">
+          <div class="flex justify-between text-slate-500">
+            <span>Subtotal</span>
+            <span id="cart-subtotal-val" class="font-bold text-slate-900 dark:text-slate-100">$0.00</span>
+          </div>
+          <div class="flex justify-between text-slate-500">
+            <span>VIP Discount</span>
+            <span id="cart-discount-val" class="font-bold text-emerald-600">-$0.00</span>
+          </div>
+          <div class="flex justify-between text-slate-500">
+            <span>Carbon-Neutral Insured Transit</span>
+            <span id="cart-shipping-val" class="font-bold text-slate-900 dark:text-slate-100">FREE</span>
+          </div>
+          <div class="pt-2 border-t border-theme flex justify-between text-sm sm:text-base font-extrabold text-slate-900 dark:text-slate-50">
+            <span>Total Amount</span>
+            <span id="cart-modal-total">$0.00</span>
+          </div>
+        </div>
+        <div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
+          <button id="cart-clear-btn" class="w-full sm:w-auto py-2.5 px-4 border border-theme text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800">Clear Trunk</button>
+          <button id="cart-proceed-btn" class="btn-primary w-full sm:flex-1 !py-3">
+            <span>Proceed to Shipping & Payment &rarr;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: SHIPPING ADDRESS & PAYMENT METHOD VIEW -->
+      <form id="checkout-form" novalidate class="hidden p-4 sm:p-6 space-y-5">
+        <div>
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-3 flex items-center gap-2">
+            <span>A. Customer & Delivery Address</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div>
+              <label for="checkout-name" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Full Name *</label>
+              <input type="text" id="checkout-name" required placeholder="John Doe (No numbers)" class="form-input text-xs py-2" />
+              <span id="checkout-name-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="checkout-email" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Email Address *</label>
+              <input type="email" id="checkout-email" required placeholder="solver@domain.com" class="form-input text-xs py-2" />
+              <span id="checkout-email-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="checkout-phone" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Contact Phone *</label>
+              <input type="tel" id="checkout-phone" required placeholder="+1 555-019-2834 (Digits only)" class="form-input text-xs py-2" />
+              <span id="checkout-phone-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="checkout-country" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Country / Region *</label>
+              <select id="checkout-country" class="form-input text-xs py-2">
+                <option value="US">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="DE">Germany</option>
+                <option value="FR">France</option>
+                <option value="JP">Japan</option>
+                <option value="AU">Australia</option>
+                <option value="OTHER">International Dispatch</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="checkout-address" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Street Address *</label>
+              <input type="text" id="checkout-address" required placeholder="Apt, Suite, Unit, Street Number" class="form-input text-xs py-2" />
+              <span id="checkout-address-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="checkout-city" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">City *</label>
+              <input type="text" id="checkout-city" required placeholder="e.g. New York" class="form-input text-xs py-2" />
+              <span id="checkout-city-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="checkout-zip" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ZIP / Postal Code *</label>
+              <input type="text" id="checkout-zip" required placeholder="e.g. 10001" class="form-input text-xs py-2" />
+              <span id="checkout-zip-error" class="error-message"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-theme">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-2">
+            B. Delivery Method
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <label class="p-3 border border-amber-600 bg-amber-50/50 dark:bg-amber-950/20 flex items-center justify-between cursor-pointer">
+              <div class="flex items-center gap-2">
+                <input type="radio" name="shipping_method" value="standard" checked class="text-amber-600" />
+                <div>
+                  <span class="font-bold block">Carbon-Neutral Ground</span>
+                  <span class="text-[10px] text-slate-500">3–5 Business Days</span>
+                </div>
+              </div>
+              <span class="font-bold text-emerald-600">FREE</span>
+            </label>
+            <label class="p-3 border border-theme flex items-center justify-between cursor-pointer hover:border-amber-600">
+              <div class="flex items-center gap-2">
+                <input type="radio" name="shipping_method" value="express" class="text-amber-600" />
+                <div>
+                  <span class="font-bold block">Priority Air Courier</span>
+                  <span class="text-[10px] text-slate-500">1–2 Business Days</span>
+                </div>
+              </div>
+              <span class="font-bold">$14.00</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-theme">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-2">
+            C. Payment Method
+          </h4>
+          <div class="grid grid-cols-3 gap-2 mb-3 text-xs font-bold text-center">
+            <button type="button" id="pay-method-card" class="payment-method-btn p-2.5 border-2 border-amber-600 bg-theme-primary text-slate-900 dark:text-slate-100">
+              💳 Card
+            </button>
+            <button type="button" id="pay-method-paypal" class="payment-method-btn p-2.5 border border-theme bg-theme-secondary text-slate-600 dark:text-slate-400">
+              🅿️ PayPal
+            </button>
+            <button type="button" id="pay-method-wire" class="payment-method-btn p-2.5 border border-theme bg-theme-secondary text-slate-600 dark:text-slate-400">
+              🏦 Wire / COD
+            </button>
+          </div>
+          <div id="card-payment-panel" class="p-3 bg-theme-secondary border border-theme space-y-3 text-xs">
+            <div>
+              <label for="card-holder" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Cardholder Name *</label>
+              <input type="text" id="card-holder" placeholder="Name as printed on card" class="form-input text-xs py-2" />
+              <span id="card-holder-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="card-number" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Card Number *</label>
+              <input type="text" id="card-number" maxlength="19" placeholder="4000 1234 5678 9010" class="form-input text-xs py-2 font-mono" />
+              <span id="card-number-error" class="error-message"></span>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label for="card-exp" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Expiration *</label>
+                <input type="text" id="card-exp" maxlength="5" placeholder="MM/YY" class="form-input text-xs py-2 font-mono" />
+                <span id="card-exp-error" class="error-message"></span>
+              </div>
+              <div>
+                <label for="card-cvv" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">CVV / CVC *</label>
+                <input type="password" id="card-cvv" maxlength="4" placeholder="123" class="form-input text-xs py-2 font-mono" />
+                <span id="card-cvv-error" class="error-message"></span>
+              </div>
+            </div>
+          </div>
+          <div id="paypal-payment-panel" class="hidden p-4 bg-theme-secondary border border-theme text-center text-xs">
+            <p class="font-bold text-slate-800 dark:text-slate-200 mb-2">You will be redirected to PayPal to complete your payment securely.</p>
+            <span class="text-[11px] text-slate-500">Zero surcharge for collector society members.</span>
+          </div>
+          <div id="wire-payment-panel" class="hidden p-4 bg-theme-secondary border border-theme text-xs space-y-1">
+            <p class="font-bold text-slate-800 dark:text-slate-200">Bespoke Collector Wire / Invoice</p>
+            <p class="text-slate-500">An official invoice with IBAN / Swift routing will be dispatched to your email for direct settlement.</p>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-theme flex flex-col sm:flex-row items-center justify-between gap-3">
+          <button type="button" id="back-to-items-btn" class="w-full sm:w-auto py-2.5 px-4 border border-theme text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+            &larr; Back to Items
+          </button>
+          <button type="submit" id="place-order-btn" class="btn-primary w-full sm:flex-1 !py-3">
+            <span>Authorize & Place Order (<span id="checkout-final-total">$0.00</span>)</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- STEP 3: ORDER CONFIRMATION RECEIPT VIEW -->
+      <div id="cart-step-receipt" class="hidden p-6 text-center space-y-4">
+        <div class="w-16 h-16 bg-emerald-600 text-white flex items-center justify-center mx-auto text-2xl font-black">
+          ✓
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 block mb-1">Payment Authorized</span>
+          <h3 class="text-2xl font-black">Your Puzzle Order is Confirmed!</h3>
+          <p class="text-xs text-slate-500 mt-1">A detailed tracking ledger and solution guide have been dispatched to your email.</p>
+        </div>
+        <div class="p-4 bg-theme-secondary border border-theme text-left text-xs space-y-2 max-w-md mx-auto">
+          <div class="flex justify-between">
+            <span class="text-slate-400">Order Reference:</span>
+            <span id="receipt-order-id" class="font-mono font-bold text-slate-900 dark:text-slate-100">CRB-2026-00000</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">Total Charged:</span>
+            <span id="receipt-amount-paid" class="font-bold text-amber-600">$0.00</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">Recipient:</span>
+            <span id="receipt-customer-name" class="font-bold">Valued Solver</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">Estimated Dispatch:</span>
+            <span class="font-bold">Next Business Day</span>
+          </div>
+        </div>
+        <button id="receipt-close-btn" class="btn-primary !py-3 !px-8">
+          <span>Continue Exploring Catalog</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Core JavaScript & Product Filtering Engine -->
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

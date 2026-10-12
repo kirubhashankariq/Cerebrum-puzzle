@@ -1,0 +1,483 @@
+/* ==========================================================================
+   CEREBRUM PUZZLE & BRAIN GAME SPECIALTY STORE - CORE STYLESHEET
+   Flat, Ultra-Professional, High-Contrast Architecture
+   STRICTLY NO GRADIENTS | NO GLASSMORPHISM | NO NEUMORPHISM
+   ========================================================================== */
+
+/* Design Tokens & Universal Theme Variables */
+:root {
+  /* Strict Unified Heading Color Across Entire Project */
+  --heading-color: #0F172A; /* Slate 900 */
+  --subheading-color: #334155; /* Slate 700 */
+  --body-text-color: #1E293B; /* Slate 800 */
+  --muted-text-color: #64748B; /* Slate 500 */
+  
+  /* High-Contrast Flat Theme Palette */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC; /* Slate 50 */
+  --bg-tertiary: #F1F5F9; /* Slate 100 */
+  --border-color: #E2E8F0; /* Slate 200 */
+  --border-strong: #0F172A; /* Slate 900 */
+  
+  /* Brand Accent Tokens */
+  --brand-primary: #0F172A;
+  --brand-accent: #D97706; /* Sharp Amber 600 */
+  --brand-accent-hover: #B45309; /* Amber 700 */
+  --brand-accent-text: #FFFFFF;
+  
+  /* Hero Overlay - High Contrast Light Mode */
+  --hero-overlay-bg: rgba(255, 255, 255, 0.90);
+  
+  /* Strict Flat Card Shadow */
+  --card-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --modal-overlay: rgba(15, 23, 42, 0.70);
+}
+
+html.dark {
+  /* Strict Unified Heading Color Across Entire Project in Dark Mode */
+  --heading-color: #F8FAFC; /* Slate 50 */
+  --subheading-color: #E2E8F0; /* Slate 200 */
+  --body-text-color: #CBD5E1; /* Slate 300 */
+  --muted-text-color: #94A3B8; /* Slate 400 */
+  
+  /* Dark Mode High-Contrast Flat Theme Palette */
+  --bg-primary: #0B0F19; /* Pure Deep Obsidian */
+  --bg-secondary: #111827; /* Slate 900 */
+  --bg-tertiary: #1E293B; /* Slate 800 */
+  --border-color: #334155; /* Slate 700 */
+  --border-strong: #F8FAFC; /* Slate 50 */
+  
+  /* Brand Accent Tokens in Dark */
+  --brand-primary: #F8FAFC;
+  --brand-accent: #F59E0B; /* High-Visibility Amber 500 */
+  --brand-accent-hover: #D97706; /* Amber 600 */
+  --brand-accent-text: #0B0F19;
+  
+  /* Hero Overlay - High Contrast Dark Mode */
+  --hero-overlay-bg: rgba(11, 15, 25, 0.92);
+  
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.40);
+  --modal-overlay: rgba(0, 0, 0, 0.85);
+}
+
+/* Base Reset & Typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--body-text-color);
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html.dark {
+  background-color: var(--bg-primary) !important;
+  color-scheme: dark;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--body-text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+html.dark body {
+  background-color: var(--bg-primary) !important;
+}
+
+/* ==========================================================================
+   CRITICAL REQUIREMENT:
+   Every single H1, H2, H3, H4, H5, H6 MUST be the exact same text color
+   across the entire project in light mode and dark mode.
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6,
+.unified-heading {
+  color: var(--heading-color) !important;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+/* Subheadings / Section Descriptions */
+.section-subtitle,
+.subheading-unified {
+  color: var(--subheading-color) !important;
+}
+
+/* High Contrast Flat Container Utilities */
+.bg-theme-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-theme-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.bg-theme-tertiary {
+  background-color: var(--bg-tertiary);
+}
+
+.border-theme {
+  border-color: var(--border-color);
+}
+
+.border-theme-strong {
+  border-color: var(--border-strong);
+}
+
+/* High-Contrast Flat Button Styling (No Gradients) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--brand-accent);
+  color: var(--brand-accent-text) !important;
+  border: 1px solid var(--brand-accent);
+  border-radius: 0.25rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-accent-hover);
+  border-color: var(--brand-accent-hover);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: transparent;
+  color: var(--heading-color) !important;
+  border: 2px solid var(--border-strong);
+  border-radius: 0.25rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--border-strong);
+  color: var(--bg-primary) !important;
+}
+
+/* Hero Section Overlay - 100% Text Legibility in Both Modes */
+.hero-wrapper {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  isolation: isolate;
+}
+
+.hero-scrim {
+  background-color: var(--hero-overlay-bg);
+  backdrop-filter: none !important; /* STRICTLY NO GLASSMORPHISM */
+}
+
+/* Strict Flat Cards - Clean Modern Architectural Aesthetics */
+.flat-card {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.flat-card:hover {
+  border-color: var(--brand-accent);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+html.dark .flat-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Difficulty Badges - High Contrast Flat Tags */
+.badge-easy {
+  background-color: #065F46;
+  color: #ECFDF5;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-medium {
+  background-color: #1E40AF;
+  color: #EFF6FF;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-hard {
+  background-color: #9A3412;
+  color: #FFF7ED;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-master {
+  background-color: #831843;
+  color: #FDF2F8;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   NAVBAR ACTIVE TAB HIGHLIGHTER (High-Contrast, Clean & Flat)
+   Desktop: Solid Accent Indicator Bar & Accent Font
+   Mobile Drawer: Accent Pill Background & Indicator Border
+   ========================================================================== */
+.nav-link-item {
+  position: relative;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+
+/* Desktop Active Tab */
+header nav .nav-link-item.active {
+  color: var(--brand-accent) !important;
+  font-weight: 800 !important;
+  border-bottom: 2px solid var(--brand-accent) !important;
+}
+
+html.dark header nav .nav-link-item.active {
+  color: var(--brand-accent) !important;
+  border-bottom: 2px solid var(--brand-accent) !important;
+}
+
+/* Desktop Hover */
+header nav .nav-link-item:hover {
+  color: var(--brand-accent) !important;
+}
+
+/* Mobile Drawer Active Tab */
+#mobile-menu-drawer .nav-link-item {
+  padding: 0.625rem 0.75rem;
+  border-left: 3px solid transparent;
+  transition: all 0.15s ease;
+}
+
+#mobile-menu-drawer .nav-link-item.active {
+  color: var(--brand-accent) !important;
+  font-weight: 800 !important;
+  background-color: rgba(217, 119, 6, 0.08);
+  border-left: 3px solid var(--brand-accent) !important;
+}
+
+html.dark #mobile-menu-drawer .nav-link-item.active {
+  color: var(--brand-accent) !important;
+  background-color: rgba(245, 158, 11, 0.15);
+  border-left: 3px solid var(--brand-accent) !important;
+}
+
+/* RTL Support for Mobile Drawer Active Tab */
+[dir="rtl"] #mobile-menu-drawer .nav-link-item {
+  border-left: none;
+  border-right: 3px solid transparent;
+}
+
+[dir="rtl"] #mobile-menu-drawer .nav-link-item.active {
+  border-left: none !important;
+  border-right: 3px solid var(--brand-accent) !important;
+}
+
+/* RTL Support Rules */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Form Validation Styles */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-primary);
+  color: var(--body-text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.form-input:focus {
+  border-color: var(--brand-accent);
+}
+
+.form-input.is-invalid {
+  border-color: #DC2626 !important;
+  background-color: rgba(220, 38, 38, 0.03);
+}
+
+.form-input.is-valid {
+  border-color: #16A34A !important;
+}
+
+.error-message {
+  color: #DC2626;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.is-invalid + .error-message,
+.error-message.active {
+  display: block;
+}
+
+/* Custom Notification Toast */
+#toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 24rem;
+  width: calc(100% - 3rem);
+  pointer-events: none;
+}
+
+[dir="rtl"] #toast-container {
+  right: auto;
+  left: 1.5rem;
+}
+
+.toast {
+  pointer-events: auto;
+  background-color: var(--bg-primary);
+  border-left: 4px solid var(--brand-accent);
+  border-top: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 1.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  border-radius: 0.25rem;
+  animation: toastSlideIn 0.25s ease-out forwards;
+}
+
+[dir="rtl"] .toast {
+  border-left: 1px solid var(--border-color);
+  border-right: 4px solid var(--brand-accent);
+}
+
+.toast.toast-success {
+  border-left-color: #16A34A;
+}
+[dir="rtl"] .toast.toast-success {
+  border-right-color: #16A34A;
+}
+
+.toast.toast-error {
+  border-left-color: #DC2626;
+}
+[dir="rtl"] .toast.toast-error {
+  border-right-color: #DC2626;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Backdrop & Dialog */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--modal-overlay);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .modal-overlay {
+    padding: 1.5rem;
+  }
+}
+
+.modal-content {
+  background-color: var(--bg-primary);
+  border: 2px solid var(--border-strong);
+  border-radius: 0.25rem;
+  max-width: 44rem;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+/* Jigsaw grid overlay preview for Custom Puzzle - Flat SVG pattern (NO GRADIENTS) */
+.puzzle-preview-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-size: 32px 32px;
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 32 0 L 0 0 0 32' fill='none' stroke='rgba(0,0,0,0.18)' stroke-width='1' stroke-dasharray='3,3'/%3E%3C/svg%3E");
+}
+html.dark .puzzle-preview-grid {
+  background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 32 0 L 0 0 0 32' fill='none' stroke='rgba(255,255,255,0.22)' stroke-width='1' stroke-dasharray='3,3'/%3E%3C/svg%3E");
+}
