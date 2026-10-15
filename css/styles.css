@@ -25,8 +25,8 @@
   --brand-accent-hover: #B45309; /* Amber 700 */
   --brand-accent-text: #FFFFFF;
   
-  /* Hero Overlay - High Contrast Light Mode */
-  --hero-overlay-bg: rgba(255, 255, 255, 0.90);
+  /* Hero Overlay - High Contrast Light Mode (Crisp Image + Sharp Text) */
+  --hero-overlay-bg: rgba(255, 255, 255, 0.72);
   
   /* Strict Flat Card Shadow */
   --card-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
@@ -53,8 +53,8 @@ html.dark {
   --brand-accent-hover: #D97706; /* Amber 600 */
   --brand-accent-text: #0B0F19;
   
-  /* Hero Overlay - High Contrast Dark Mode */
-  --hero-overlay-bg: rgba(11, 15, 25, 0.92);
+  /* Hero Overlay - High Contrast Dark Mode (Crisp Image + Sharp Text) */
+  --hero-overlay-bg: rgba(11, 15, 25, 0.80);
   
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.40);
   --modal-overlay: rgba(0, 0, 0, 0.85);
@@ -135,20 +135,26 @@ h1, h2, h3, h4, h5, h6,
   border-color: var(--border-strong);
 }
 
-/* High-Contrast Flat Button Styling (No Gradients) */
+/* ==========================================================================
+   STRICT TWO-COLOR BUTTON ARCHITECTURE
+   Only two button colors are permitted across the entire project:
+   1. Primary (.btn-primary): Amber fill with sharp contrast
+   2. Secondary (.btn-secondary): Transparent fill with strong outline
+   STRICTLY NO THIRD BUTTON COLOR
+   ========================================================================== */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background-color: var(--brand-accent);
+  background-color: var(--brand-accent) !important;
   color: var(--brand-accent-text) !important;
-  border: 1px solid var(--brand-accent);
+  border: 1px solid var(--brand-accent) !important;
   border-radius: 0.25rem;
   transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
   cursor: pointer;
@@ -156,8 +162,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .btn-primary:hover {
-  background-color: var(--brand-accent-hover);
-  border-color: var(--brand-accent-hover);
+  background-color: var(--brand-accent-hover) !important;
+  border-color: var(--brand-accent-hover) !important;
 }
 
 .btn-secondary {
@@ -166,25 +172,25 @@ h1, h2, h3, h4, h5, h6,
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background-color: transparent;
+  background-color: transparent !important;
   color: var(--heading-color) !important;
-  border: 2px solid var(--border-strong);
+  border: 2px solid var(--border-strong) !important;
   border-radius: 0.25rem;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   cursor: pointer;
   text-decoration: none;
 }
 
 .btn-secondary:hover {
-  background-color: var(--border-strong);
+  background-color: var(--border-strong) !important;
   color: var(--bg-primary) !important;
 }
 
-/* Hero Section Overlay - 100% Text Legibility in Both Modes */
+/* Hero Section Overlay - 100% Text Legibility & Background Image Clarity */
 .hero-wrapper {
   position: relative;
   background-size: cover;
@@ -195,7 +201,26 @@ h1, h2, h3, h4, h5, h6,
 
 .hero-scrim {
   background-color: var(--hero-overlay-bg);
-  backdrop-filter: none !important; /* STRICTLY NO GLASSMORPHISM */
+  backdrop-filter: none !important; /* STRICTLY NO GLASSMORPHISM OR BLUR */
+}
+
+/* Crisp text contrast enhancement against hero background images */
+.hero-wrapper h1,
+.hero-wrapper .hero-heading {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
+}
+
+html.dark .hero-wrapper h1,
+html.dark .hero-wrapper .hero-heading {
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.95);
+}
+
+.hero-wrapper .section-subtitle {
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+html.dark .hero-wrapper .section-subtitle {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 /* Strict Flat Cards - Clean Modern Architectural Aesthetics */
@@ -285,6 +310,41 @@ html.dark header nav .nav-link-item.active {
 /* Desktop Hover */
 header nav .nav-link-item:hover {
   color: var(--brand-accent) !important;
+}
+
+/* ==========================================================================
+   UNIFIED HOME DROPDOWN MENU (Click & Hover)
+   ========================================================================== */
+#home-dropdown-container {
+  position: relative;
+}
+
+#home-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.25rem;
+  width: 14rem;
+  background-color: var(--bg-primary);
+  border: 2px solid var(--border-strong);
+  border-radius: 0.25rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+html.dark #home-dropdown-menu {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+[dir="rtl"] #home-dropdown-menu {
+  left: auto !important;
+  right: 0 !important;
+}
+
+@media (min-width: 1024px) {
+  #home-dropdown-container:hover #home-dropdown-menu {
+    display: block !important;
+  }
 }
 
 /* Mobile Drawer Active Tab */
@@ -480,4 +540,39 @@ html.dark #mobile-menu-drawer .nav-link-item.active {
 }
 html.dark .puzzle-preview-grid {
   background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 32 0 L 0 0 0 32' fill='none' stroke='rgba(255,255,255,0.22)' stroke-width='1' stroke-dasharray='3,3'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   UNIVERSAL 320PX TO 1440PX RESPONSIVE PERFECTION
+   Guarantees zero horizontal scroll and flawless button/text wrapping on 320px
+   ========================================================================== */
+html, body {
+  overflow-x: clip !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+}
+
+@media (max-width: 640px) {
+  .btn-primary, .btn-secondary {
+    white-space: normal !important;
+    text-align: center !important;
+    padding: 0.625rem 0.875rem !important;
+    font-size: 0.75rem !important;
+    max-width: 100% !important;
+    line-height: 1.35 !important;
+  }
+  
+  /* Prevent oversized tracking from causing overflow on 320px screens */
+  .tracking-widest {
+    letter-spacing: 0.06em !important;
+  }
+  .tracking-wider {
+    letter-spacing: 0.04em !important;
+  }
+  
+  /* Prevent long words or metrics from breaking container bounds */
+  h1, h2, h3, h4, h5, h6, p, span {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
 }

@@ -169,6 +169,70 @@
         link.removeAttribute('aria-current');
       }
     });
+
+    // Synchronize Home Dropdown Button Active State
+    const homeBtn = document.getElementById('home-dropdown-btn');
+    const mobileHomeBtn = document.getElementById('mobile-home-dropdown-btn');
+    if (pageName === 'index.html' || pageName === 'home-2.html' || pageName === '') {
+      if (homeBtn) {
+        homeBtn.classList.add('active');
+        homeBtn.setAttribute('aria-current', 'page');
+      }
+      if (mobileHomeBtn) {
+        mobileHomeBtn.classList.add('text-amber-600', 'font-extrabold');
+      }
+    } else {
+      if (homeBtn) {
+        homeBtn.classList.remove('active');
+        homeBtn.removeAttribute('aria-current');
+      }
+      if (mobileHomeBtn) {
+        mobileHomeBtn.classList.remove('text-amber-600', 'font-extrabold');
+      }
+    }
+  }
+
+  // --- HOME DROPDOWN TOGGLE (CLICK & ACCESSIBILITY) ---
+  function initHomeDropdown() {
+    const homeBtn = document.getElementById('home-dropdown-btn');
+    const homeMenu = document.getElementById('home-dropdown-menu');
+
+    if (homeBtn && homeMenu) {
+      homeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isHidden = homeMenu.classList.contains('hidden');
+        if (isHidden) {
+          homeMenu.classList.remove('hidden');
+          homeBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          homeMenu.classList.add('hidden');
+          homeBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!homeBtn.contains(e.target) && !homeMenu.contains(e.target)) {
+          homeMenu.classList.add('hidden');
+          homeBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // Mobile Drawer Home Accordion Toggle
+    const mHomeBtn = document.getElementById('mobile-home-dropdown-btn');
+    const mHomeSub = document.getElementById('mobile-home-submenu');
+    const mHomeChevron = document.getElementById('mobile-home-chevron');
+
+    if (mHomeBtn && mHomeSub) {
+      mHomeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        mHomeSub.classList.toggle('hidden');
+        if (mHomeChevron) {
+          mHomeChevron.classList.toggle('rotate-180');
+        }
+      });
+    }
   }
 
   // --- TOAST NOTIFICATION SYSTEM ---
@@ -746,6 +810,7 @@
     initTheme();
     initDirection();
     initMobileMenu();
+    initHomeDropdown();
     highlightActiveLink();
     updateCartBadges();
     initCartModalEvents();

@@ -257,7 +257,7 @@
     }
 
     grid.innerHTML = filtered.map(item => `
-      <article class="flat-card flex flex-col justify-between group overflow-hidden" data-difficulty="${item.difficulty}">
+      <article class="flat-card flex flex-col justify-between group overflow-hidden h-full" data-difficulty="${item.difficulty}">
         <div>
           <div class="relative overflow-hidden aspect-square bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
             <img 
@@ -273,41 +273,41 @@
               ${item.pieces} ${item.pieces === 1 ? 'Chamber' : 'Parts'}
             </div>
           </div>
-          <div class="p-5">
+          <div class="p-5 flex-1 flex flex-col">
             <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
               <span class="uppercase tracking-wider font-semibold">${item.category}</span>
               <span class="flex items-center gap-1 font-bold text-amber-600 dark:text-amber-400">
                 ★ ${item.rating} <span class="font-normal text-slate-400">(${item.reviewsCount})</span>
               </span>
             </div>
-            <h3 class="text-lg font-bold mb-2 leading-snug line-clamp-1 group-hover:text-amber-600 transition-colors">
+            <h3 class="text-base sm:text-lg font-bold mb-2 leading-snug line-clamp-2 min-h-[3rem] group-hover:text-amber-600 transition-colors">
               ${item.name}
             </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 mb-4 leading-relaxed">
+            <p class="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 min-h-[2.5rem] mb-4 leading-relaxed">
               ${item.description}
             </p>
-            <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 mb-4">
+            <div class="flex items-center justify-between text-xs py-2 px-3 bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 mb-2">
               <span class="text-slate-500 dark:text-slate-400">Avg Solve:</span>
               <span class="font-bold text-slate-800 dark:text-slate-200">${item.solveTimeAvg}</span>
             </div>
           </div>
         </div>
-        <div class="p-5 pt-0 border-t border-slate-100 dark:border-slate-800 mt-auto">
-          <div class="flex items-center justify-between pt-3 gap-2">
+        <div class="px-5 py-3 border-t border-slate-100 dark:border-slate-800 mt-auto bg-slate-50/50 dark:bg-slate-900/30">
+          <div class="flex items-center justify-between gap-2">
             <div class="flex flex-col">
-              <span class="text-xs text-slate-400">Collector Price</span>
-              <span class="text-xl font-bold text-slate-900 dark:text-slate-100">$${item.price.toFixed(2)}</span>
+              <span class="text-[11px] text-slate-400">Collector Price</span>
+              <span class="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100">$${item.price.toFixed(2)}</span>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
               <button 
                 onclick="window.openQuickView('${item.id}')"
-                class="px-3 py-2 border border-slate-300 dark:border-slate-700 text-xs font-bold uppercase tracking-wider hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                class="btn-secondary !py-1.5 sm:!py-2 !px-2.5 sm:!px-3 text-xs whitespace-nowrap"
                 title="View Puzzle Specifications">
                 Specs
               </button>
               <button 
                 onclick="window.addToCart('${item.id}', '${item.name.replace(/'/g, "\\'")}', ${item.price}, '${item.image}', '${item.difficulty}')"
-                class="btn-primary !py-2 !px-3 text-xs"
+                class="btn-primary !py-1.5 sm:!py-2 !px-2.5 sm:!px-3 text-xs whitespace-nowrap"
                 title="Add to puzzle trunk">
                 Add
               </button>

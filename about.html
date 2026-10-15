@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Cerebrum & Co. | Master Puzzle Artisans & Cognitive Engineering</title>
+  <meta name="description" content="Discover the philosophy, engineering standards, and master artisans behind Cerebrum & Co. Precision mechanical puzzles, sequential discovery burrs, and bespoke jigsaw atelier." />
+
+  <!-- Pre-Theme Script: Prevent Dark/Light Mode Flash -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('cerebrum_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.backgroundColor = '#0B0F19';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.style.backgroundColor = '#FFFFFF';
+      }
+      const savedDir = localStorage.getItem('cerebrum_direction') || 'ltr';
+      document.documentElement.setAttribute('dir', savedDir);
+    })();
+  </script>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            brand: {
+              accent: '#D97706',
+              accentHover: '#B45309'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Project High-Contrast Flat Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-theme-primary text-slate-800 dark:text-slate-200 antialiased selection:bg-amber-600 selection:text-white">
+
+  <!-- ==========================================================================
+       GLOBAL NAVBAR
+       Unified Home Editions Select Box + About Tab + Cart Drawer + Theme/RTL
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 bg-theme-primary border-b border-theme shadow-sm transition-colors duration-200">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Brand Logo & Name -->
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 group focus:outline-none min-w-0" aria-label="Cerebrum & Co. Home">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-black text-base sm:text-xl border border-slate-900 dark:border-amber-400 flex-shrink-0">
+            <svg class="w-4 h-4 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z"/>
+            </svg>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="text-sm sm:text-base xl:text-xl font-black tracking-wider text-slate-900 dark:text-slate-50 uppercase whitespace-nowrap">CEREBRUM</span>
+            <span class="text-[9px] xl:text-[10px] tracking-widest font-semibold uppercase text-slate-500 dark:text-slate-400 -mt-1 hidden xl:block">Puzzle Specialty Store</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation (> 1024px) -->
+        <nav class="hidden lg:flex items-center gap-3 lg:gap-4 xl:gap-7" aria-label="Main Navigation">
+          <!-- Home Dropdown Menu -->
+          <div class="relative" id="home-dropdown-container">
+            <button type="button" id="home-dropdown-btn" class="nav-link-item flex items-center gap-1.5 whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent focus:outline-none" aria-expanded="false" aria-haspopup="true">
+              <span>Home</span>
+              <svg class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            
+            <div id="home-dropdown-menu" class="hidden absolute top-full left-0 mt-1 w-56 bg-theme-primary border-2 border-theme-strong shadow-2xl py-2 z-50">
+              <a href="index.html" class="flex flex-col px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border-b border-theme text-left">
+                <span class="text-xs font-black uppercase text-slate-900 dark:text-slate-100">Home 1: Signature</span>
+                <span class="text-[10px] text-slate-500 dark:text-slate-400">Classic mechanical burrs & brain challenges</span>
+              </a>
+              <a href="home-2.html" class="flex flex-col px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left">
+                <span class="text-xs font-black uppercase text-slate-900 dark:text-slate-100">Home 2: Collector Vault</span>
+                <span class="text-[10px] text-slate-500 dark:text-slate-400">Sequential discovery & rare alloys</span>
+              </a>
+            </div>
+          </div>
+          
+          <a href="about.html" class="nav-link-item active whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent" aria-current="page">About</a>
+          <a href="products.html" class="nav-link-item whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent">Products</a>
+          <a href="custom-puzzle.html" class="nav-link-item whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent">Custom Puzzle</a>
+          <a href="contact.html" class="nav-link-item whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent">Contact</a>
+        </nav>
+
+        <!-- Desktop Utilities & CTA (> 1024px) -->
+        <div class="hidden lg:flex items-center gap-2 xl:gap-3">
+          <!-- RTL / LTR Toggle -->
+          <button class="rtl-toggle-btn p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Direction (RTL / LTR)" aria-label="Toggle Direction (RTL / LTR)">
+            <svg class="w-5 h-5 rtl-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+            </svg>
+          </button>
+
+          <!-- Dark / Light Theme Toggle -->
+          <button class="theme-toggle-btn p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+            <svg class="icon-sun w-5 h-5 hidden text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg class="icon-moon w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+
+          <!-- Cart Drawer Button -->
+          <button class="open-cart-btn relative p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Open Puzzle Trunk Cart" aria-label="Open Puzzle Trunk Cart">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="cart-count-badge absolute -top-1.5 -right-1.5 bg-amber-600 text-white font-black text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+          </button>
+
+          <!-- CTA Button (Primary Only) -->
+          <a href="products.html" class="btn-primary !py-2 !px-3.5 xl:!py-2.5 xl:!px-5 text-xs xl:text-sm whitespace-nowrap">
+            <span>Shop Now</span>
+          </a>
+        </div>
+
+        <!-- Mobile Controls (< 1024px) -->
+        <div class="flex items-center gap-1 sm:gap-2 lg:hidden flex-shrink-0">
+          <!-- Mobile RTL Toggle -->
+          <button class="rtl-toggle-btn p-1.5 sm:p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Direction (RTL / LTR)" aria-label="Toggle Direction (RTL / LTR)">
+            <svg class="w-4 h-4 rtl-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+            </svg>
+          </button>
+
+          <!-- Mobile Dark/Light Theme Toggle -->
+          <button class="theme-toggle-btn p-1.5 sm:p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+            <svg class="icon-sun w-4 h-4 hidden text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg class="icon-moon w-4 h-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+
+          <!-- Mobile Cart Button -->
+          <button class="open-cart-btn relative p-1.5 sm:p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" aria-label="Open Cart" title="Open Cart">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="cart-count-badge absolute -top-1.5 -right-1.5 bg-amber-600 text-white font-black text-[10px] w-4.5 h-4.5 min-w-[18px] flex items-center justify-center rounded-full">0</span>
+          </button>
+          
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobile-menu-toggle" class="p-1.5 sm:p-2 border border-theme text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" aria-label="Open Mobile Menu" title="Open Mobile Menu">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Overlay (< 1024px) -->
+    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 z-40 hidden lg:hidden"></div>
+    <div id="mobile-menu-drawer" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-theme-primary border-l border-theme z-50 p-6 flex flex-col justify-between hidden lg:hidden overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-theme">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-bold text-lg">C</div>
+            <span class="font-extrabold tracking-wider text-slate-900 dark:text-slate-50 uppercase">CEREBRUM</span>
+          </div>
+          <button id="mobile-menu-close" class="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-slate-100" aria-label="Close Mobile Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <nav class="flex flex-col gap-3 py-6" aria-label="Mobile Navigation Links">
+          <!-- Mobile Home Accordion / Submenu -->
+          <div class="border-b border-theme pb-2 mb-1">
+            <button type="button" id="mobile-home-dropdown-btn" class="w-full flex items-center justify-between text-base font-bold uppercase tracking-wide text-slate-800 dark:text-slate-200 hover:text-amber-600 py-1.5 focus:outline-none">
+              <span>Home</span>
+              <svg id="mobile-home-chevron" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div id="mobile-home-submenu" class="flex flex-col pl-4 pr-2 py-1 space-y-1">
+              <a href="index.html" class="nav-link-item text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300 hover:text-amber-600 py-1.5 flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-slate-400 rounded-full"></span>
+                <span>Home 1: Signature</span>
+              </a>
+              <a href="home-2.html" class="nav-link-item text-sm font-bold uppercase tracking-wide text-slate-700 dark:text-slate-300 hover:text-amber-600 py-1.5 flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-slate-400 rounded-full"></span>
+                <span>Home 2: Collector Vault</span>
+              </a>
+            </div>
+          </div>
+          
+          <a href="about.html" class="nav-link-item active text-base font-bold uppercase tracking-wide text-slate-800 dark:text-slate-200 hover:text-amber-600 py-1" aria-current="page">About</a>
+          <a href="products.html" class="nav-link-item text-base font-bold uppercase tracking-wide text-slate-800 dark:text-slate-200 hover:text-amber-600 py-1">Products</a>
+          <a href="custom-puzzle.html" class="nav-link-item text-base font-bold uppercase tracking-wide text-slate-800 dark:text-slate-200 hover:text-amber-600 py-1">Custom Puzzle</a>
+          <a href="contact.html" class="nav-link-item text-base font-bold uppercase tracking-wide text-slate-800 dark:text-slate-200 hover:text-amber-600 py-1">Contact</a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-theme flex flex-col gap-4">
+        <div class="flex items-center justify-between gap-2">
+          <button class="rtl-toggle-btn flex-1 py-2 px-3 border border-theme text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 rtl-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+            <span>Direction: <span class="rtl-label">RTL</span></span>
+          </button>
+          <button class="theme-toggle-btn flex-1 py-2 px-3 border border-theme text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center justify-center gap-2">
+            <span>Theme: <span class="theme-label">Dark</span></span>
+          </button>
+        </div>
+        <a href="products.html" class="btn-primary w-full text-center">
+          <span>Shop Now</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       SECTION 1: HERO SECTION
+       Centered Text Architecture + High-Contrast Clear Background Image
+       ========================================================================== -->
+  <section class="hero-wrapper min-h-[480px] sm:min-h-[540px] lg:min-h-[600px] flex items-center border-b border-theme" style="background-image: url('https://i.pinimg.com/1200x/8e/bc/13/8ebc13bed5bd1979e28f09571dae4076.jpg');">
+    <div class="hero-scrim absolute inset-0"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
+      <div class="max-w-3xl mx-auto text-center flex flex-col items-center">
+        
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-600/10 dark:bg-amber-400/10 border border-amber-600 dark:border-amber-400 mb-4 sm:mb-6 mx-auto">
+          <span class="w-2 h-2 bg-amber-600 dark:bg-amber-400 flex-shrink-0"></span>
+          <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">Atelier Heritage & Mechanical Craftsmanship</span>
+        </div>
+
+        <h1 class="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 leading-tight text-center">
+          The Architecture of Mechanical Mystery.
+        </h1>
+
+        <p class="section-subtitle text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 leading-relaxed font-normal text-center max-w-2xl mx-auto">
+          Founded on the conviction that physical puzzles are high art and intellectual meditation. Precision engineered to micro-tolerances, solved through patient deduction.
+        </p>
+
+        <!-- Centered CTAs: Primary & Secondary Colors Only -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
+          <a href="products.html" class="btn-primary text-sm sm:text-base !py-3 sm:!py-3.5 !px-6 sm:!px-8 text-center w-full sm:w-auto">
+            <span>Explore Collection</span>
+            <svg class="w-4 h-4 rtl-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="custom-puzzle.html" class="btn-secondary text-sm sm:text-base !py-3 sm:!py-3.5 !px-6 sm:!px-8 text-center w-full sm:w-auto">
+            <span>Commission Custom Jigsaw</span>
+          </a>
+        </div>
+
+        <!-- Centered Accuracy Metrics Grid -->
+        <div class="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-slate-300 dark:border-slate-700 grid grid-cols-3 gap-2 sm:gap-6 text-center text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 w-full max-w-xl mx-auto">
+          <div>
+            <span class="font-extrabold text-slate-900 dark:text-slate-100 text-xs sm:text-sm block sm:inline mr-1">±0.02mm</span>
+            <span>CNC Accuracy</span>
+          </div>
+          <div>
+            <span class="font-extrabold text-slate-900 dark:text-slate-100 text-xs sm:text-sm block sm:inline mr-1">50,000+</span>
+            <span>Puzzles Solved</span>
+          </div>
+          <div>
+            <span class="font-extrabold text-slate-900 dark:text-slate-100 text-xs sm:text-sm block sm:inline mr-1">100%</span>
+            <span>Zero-Glue Builds</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: OUR ORIGIN & THE CEREBRUM PHILOSOPHY
+       Editorial 2-Column Showcase with High-Contrast Typography
+       ========================================================================== -->
+  <section class="py-16 sm:py-20 bg-theme-primary border-b border-theme">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        
+        <div class="lg:col-span-6 space-y-5">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-800 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 border border-theme">
+            <span>Our Foundation • Manhattan Atelier</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight">
+            Rejecting the Digital Ephemeral for Tactile Transcendence.
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+            In an era dominated by transient digital screens, Cerebrum was established as a sanctuary for tangible intellectual friction. We believe that true genius is stimulated not through algorithmic feeds, but by holding heavy, cold metal burrs and deciphering internal deadbolts through tactile instinct.
+          </p>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+            Our atelier brings together horologists, aerospace CNC machinists, and mathematical topologists. Each puzzle is treated not as a novelty plaything, but as a kinetic sculpture—a mechanical testament to geometry, gravity, and human perseverance.
+          </p>
+          
+          <div class="pt-4 grid grid-cols-2 gap-4">
+            <div class="p-4 bg-theme-secondary border border-theme">
+              <span class="block text-2xl font-black text-amber-600">2018</span>
+              <span class="text-xs font-bold uppercase text-slate-500">Founded in New York</span>
+            </div>
+            <div class="p-4 bg-theme-secondary border border-theme">
+              <span class="block text-2xl font-black text-amber-600">42 Countries</span>
+              <span class="text-xs font-bold uppercase text-slate-500">Collectors Served</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="p-3 bg-theme-primary border-2 border-theme-strong shadow-xl">
+            <div class="aspect-[4/3] overflow-hidden bg-slate-100 dark:bg-slate-800">
+              <img 
+                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80" 
+                alt="Precision CNC lathe turning metal puzzle parts" 
+                class="w-full h-full object-cover" 
+              />
+            </div>
+            <div class="p-4 bg-theme-secondary mt-3 border border-theme flex items-center justify-between text-xs">
+              <div>
+                <span class="font-bold block text-slate-900 dark:text-slate-100">Atelier Bay 4 • Precision Milling</span>
+                <span class="text-slate-500">Phosphor Bronze & Titanium Turnings</span>
+              </div>
+              <span class="px-2 py-1 bg-amber-600 text-white font-bold text-[10px] uppercase">Master Atelier</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: FOUR CORE ENGINEERING PILLARS
+       Strict Flat 4-Column Architectural Cards
+       ========================================================================== -->
+  <section class="py-16 sm:py-20 bg-theme-secondary border-b border-theme">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-3">Our Engineering Axioms</h2>
+        <p class="section-subtitle text-sm sm:text-base">Four non-negotiable principles that dictate every burr, lock, and jigsaw crafted in our atelier.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="p-6 bg-theme-primary border border-theme flat-card flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center mb-5 font-black text-lg">
+              01
+            </div>
+            <h3 class="text-base font-bold mb-2">Gravitational Interlock</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              We prohibit adhesives, screws, or cosmetic fasteners. Puzzles stay assembled purely through internal friction, balanced counterweights, and gravitational equilibrium.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-theme text-[10px] font-bold uppercase tracking-wider text-amber-600">
+            Zero Adhesives Ever
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-6 bg-theme-primary border border-theme flat-card flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center mb-5 font-black text-lg">
+              02
+            </div>
+            <h3 class="text-base font-bold mb-2">Aerospace Metallurgy</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Constructed exclusively from naval brass, aircraft-grade 6061-T6 anodized aluminum, and dense phosphor bronze for unmistakable weight and thermal conduction.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-theme text-[10px] font-bold uppercase tracking-wider text-amber-600">
+            Solid Billet Stock
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-6 bg-theme-primary border border-theme flat-card flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center mb-5 font-black text-lg">
+              03
+            </div>
+            <h3 class="text-base font-bold mb-2">Mensa Calibration</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Every design is rigorously benchmarked by competition speed solvers and Mensa fellows, certifying true difficulty ratings from Level 1 introductory to Level 10 master.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-theme text-[10px] font-bold uppercase tracking-wider text-amber-600">
+            Cognitive Validation
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="p-6 bg-theme-primary border border-theme flat-card flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center mb-5 font-black text-lg">
+              04
+            </div>
+            <h3 class="text-base font-bold mb-2">Generational Longevity</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Engineered as heirloom pieces meant to be passed down through generations. Resistant to warpage, humidity shifts, and repeated solves over decades.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-theme text-[10px] font-bold uppercase tracking-wider text-amber-600">
+            Century Guarantee
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 4: MASTER ARTISANS & THE ENGINEERING GUILD
+       Flat Profile Cards with Roles and Credentials
+       ========================================================================== -->
+  <section class="py-16 sm:py-20 bg-theme-primary border-b border-theme">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-3">Master Craftsmen Behind the Mechanism</h2>
+        <p class="section-subtitle text-sm sm:text-base">The mechanical minds responsible for transforming pure mathematical topologies into physical reality.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Artisan 1 -->
+        <div class="bg-theme-secondary border border-theme flat-card overflow-hidden flex flex-col justify-between h-full">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-200 dark:bg-slate-800">
+            <img 
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" 
+              alt="Victor Vance - Master Horologist & Burr Engineer" 
+              class="w-full h-full object-cover" 
+            />
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-amber-600 block mb-1">Chief Mechanician</span>
+            <h3 class="text-lg font-bold mb-1">Victor Vance</h3>
+            <p class="text-xs text-slate-500 mb-3">Former Geneva Horologist • 18 Years Burr Design</p>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-auto">
+              Specializes in blind sequential discovery mechanisms, counter-weighted escapements, and multi-tier internal gear labyrinths.
+            </p>
+          </div>
+        </div>
+
+        <!-- Artisan 2 -->
+        <div class="bg-theme-secondary border border-theme flat-card overflow-hidden flex flex-col justify-between h-full">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-200 dark:bg-slate-800">
+            <img 
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" 
+              alt="Elena Rostova - CNC Metallurgical Engineer" 
+              class="w-full h-full object-cover" 
+            />
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-amber-600 block mb-1">Director of Metallurgy</span>
+            <h3 class="text-lg font-bold mb-1">Elena Rostova</h3>
+            <p class="text-xs text-slate-500 mb-3">MIT Materials Science • 5-Axis CNC Specialist</p>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-auto">
+              Pioneered our proprietary micron-finish polishing process, achieving frictionless movement across phosphor bronze interfaces.
+            </p>
+          </div>
+        </div>
+
+        <!-- Artisan 3 -->
+        <div class="bg-theme-secondary border border-theme flat-card overflow-hidden flex flex-col justify-between h-full">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-200 dark:bg-slate-800">
+            <img 
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" 
+              alt="Kenji Takahashi - Yosegi & Marquetry Specialist" 
+              class="w-full h-full object-cover" 
+            />
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-amber-600 block mb-1">Master Marquetry Artisan</span>
+            <h3 class="text-lg font-bold mb-1">Kenji Takahashi</h3>
+            <p class="text-xs text-slate-500 mb-3">Hakone Traditional Guild • 4th Generation Joiner</p>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-auto">
+              Oversees our wooden trick box production, hand-selecting sustainable Baltic birch, walnut, and cherry wood for zero thermal expansion.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 5: MATERIALS & SUSTAINABILITY MANIFESTO
+       High-Contrast Split Grid
+       ========================================================================== -->
+  <section class="py-16 sm:py-20 bg-theme-secondary border-b border-theme">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-600/10 dark:bg-amber-400/10 border border-amber-600 dark:border-amber-400 mb-4">
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300">Material Integrity Standard</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-4 leading-tight">
+            Pure Raw Substrates. Zero Synthetic Compromise.
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+            We hold that the weight, aroma, and thermal touch of a puzzle are intrinsic to the intellectual joy of its solution. Every alloy and timber sheet is sustainably sourced with full traceability.
+          </p>
+
+          <div class="space-y-4">
+            <div class="p-4 bg-theme-primary border border-theme flex items-start gap-3">
+              <div class="w-8 h-8 bg-amber-600 text-white font-bold flex items-center justify-center flex-shrink-0 text-sm">✓</div>
+              <div>
+                <h4 class="font-bold text-sm">100% Recyclable Brass & Bronze Swarf</h4>
+                <p class="text-xs text-slate-500 mt-0.5">All lathe turnings are melted down in an emission-free electric induction furnace.</p>
+              </div>
+            </div>
+            <div class="p-4 bg-theme-primary border border-theme flex items-start gap-3">
+              <div class="w-8 h-8 bg-amber-600 text-white font-bold flex items-center justify-center flex-shrink-0 text-sm">✓</div>
+              <div>
+                <h4 class="font-bold text-sm">FSC-Certified Baltic Birch Plywood</h4>
+                <p class="text-xs text-slate-500 mt-0.5">Sustainably harvested northern birch featuring 12 cross-grain laminations to prevent warpage.</p>
+              </div>
+            </div>
+            <div class="p-4 bg-theme-primary border border-theme flex items-start gap-3">
+              <div class="w-8 h-8 bg-amber-600 text-white font-bold flex items-center justify-center flex-shrink-0 text-sm">✓</div>
+              <div>
+                <h4 class="font-bold text-sm">Organic Linseed & Carnauba Wax Finishes</h4>
+                <p class="text-xs text-slate-500 mt-0.5">No polyurethane or toxic volatile solvents. Only food-safe natural waxes hand-buffed to a satin sheen.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 bg-theme-primary border-2 border-theme-strong shadow-xl">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-100 dark:bg-slate-800">
+            <img 
+              src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80" 
+              alt="Artisan inspecting raw materials and wooden puzzle joints" 
+              class="w-full h-full object-cover" 
+            />
+          </div>
+          <div class="p-4 bg-theme-secondary mt-3 border border-theme flex items-center justify-between text-xs">
+            <div>
+              <span class="font-bold block text-slate-900 dark:text-slate-100">Timber Joinery Inspection</span>
+              <span class="text-slate-500">12-Ply Cross Grain Birch Lamination</span>
+            </div>
+            <span class="px-2 py-1 bg-slate-900 text-white dark:bg-amber-500 dark:text-slate-950 font-bold text-[10px] uppercase">Eco-Certified</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 6: GUILD AFFILIATIONS & CHAMPIONSHIP RECOGNITION
+       Trust Badges & International Credentials
+       ========================================================================== -->
+  <section class="py-14 bg-theme-primary border-b border-theme">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-xl mx-auto mb-8">
+        <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 block mb-1">Institutional Trust</span>
+        <h3 class="text-xl sm:text-2xl font-black">Guild Certifications & Global Acclaim</h3>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div class="p-5 bg-theme-secondary border border-theme">
+          <span class="text-2xl block mb-1">🏆</span>
+          <span class="font-bold text-xs uppercase block text-slate-900 dark:text-slate-100">IPP Nominee</span>
+          <span class="text-[10px] text-slate-500">Int'l Puzzle Party 2024 & 2025</span>
+        </div>
+        <div class="p-5 bg-theme-secondary border border-theme">
+          <span class="text-2xl block mb-1">🧠</span>
+          <span class="font-bold text-xs uppercase block text-slate-900 dark:text-slate-100">Mensa Approved</span>
+          <span class="text-[10px] text-slate-500">Mind Games Top Challenge</span>
+        </div>
+        <div class="p-5 bg-theme-secondary border border-theme">
+          <span class="text-2xl block mb-1">⚙️</span>
+          <span class="font-bold text-xs uppercase block text-slate-900 dark:text-slate-100">CNC Guild Certified</span>
+          <span class="text-[10px] text-slate-500">Aerospace Micro-Machining</span>
+        </div>
+        <div class="p-5 bg-theme-secondary border border-theme">
+          <span class="text-2xl block mb-1">🌲</span>
+          <span class="font-bold text-xs uppercase block text-slate-900 dark:text-slate-100">FSC 100% Timber</span>
+          <span class="text-[10px] text-slate-500">Sustainably Managed Forests</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 7: BESPOKE COMMISSION & PRIVATE CONSULTATION CTA
+       Centered High-Impact Banner with Two Button Colors Only
+       ========================================================================== -->
+  <section class="py-16 sm:py-20 bg-theme-secondary border-b border-theme text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-600/10 dark:bg-amber-400/10 border border-amber-600 dark:border-amber-400 mb-4 mx-auto">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300">Private Atelier Inquiries</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-black mb-4">Commission a One-Of-A-Kind Mechanical Puzzle.</h2>
+      <p class="section-subtitle text-sm sm:text-base max-w-2xl mx-auto mb-8">
+        Have a proprietary cryptic mechanism, corporate milestone gift, or custom laser jigsaw in mind? Our master craftsmen collaborate directly with collectors worldwide.
+      </p>
+      <!-- Two Button Colors Only: Primary & Secondary -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
+        <a href="custom-puzzle.html" class="btn-primary text-sm sm:text-base !py-3 sm:!py-3.5 !px-6 sm:!px-8 text-center w-full sm:w-auto">
+          <span>Configure Custom Puzzle</span>
+          <svg class="w-4 h-4 rtl-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+        <a href="contact.html" class="btn-secondary text-sm sm:text-base !py-3 sm:!py-3.5 !px-6 sm:!px-8 text-center w-full sm:w-auto">
+          <span>Schedule Concierge Call</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       GLOBAL FOOTER
+       ========================================================================== -->
+  <footer class="bg-theme-primary border-t border-theme py-16 text-slate-600 dark:text-slate-400 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        
+        <!-- Brand Column -->
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-3 group mb-4 inline-flex focus:outline-none" aria-label="Return to Cerebrum Home">
+            <div class="w-10 h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-black text-xl border border-slate-900 dark:border-amber-400">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z"/>
+              </svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xl font-extrabold tracking-wider text-slate-900 dark:text-slate-50 uppercase">CEREBRUM</span>
+              <span class="text-[10px] tracking-widest font-semibold uppercase text-slate-500 dark:text-slate-400 -mt-1">Puzzle Specialty Store</span>
+            </div>
+          </a>
+          <p class="text-xs leading-relaxed max-w-sm mb-6 text-slate-500 dark:text-slate-400">
+            Cerebrum & Co. is the premier destination for serious puzzle solvers, mechanical teaser collectors, and discerning gift seekers worldwide.
+          </p>
+          <!-- Social Icons -->
+          <div class="flex items-center gap-3">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 border border-theme flex items-center justify-center hover:bg-slate-900 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 transition-colors" aria-label="Follow Cerebrum on X">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 border border-theme flex items-center justify-center hover:bg-slate-900 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 transition-colors" aria-label="Follow Cerebrum on Instagram">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-9 h-9 border border-theme flex items-center justify-center hover:bg-slate-900 hover:text-white dark:hover:bg-amber-500 dark:hover:text-slate-950 transition-colors" aria-label="Follow Cerebrum on LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Column 1 -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Site Architecture</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-amber-600 transition-colors">Signature Collection</a></li>
+            <li><a href="home-2.html" class="hover:text-amber-600 transition-colors">Collector Vault</a></li>
+            <li><a href="about.html" class="hover:text-amber-600 transition-colors font-bold text-amber-600">About Atelier</a></li>
+            <li><a href="products.html" class="hover:text-amber-600 transition-colors">Complete Catalog</a></li>
+            <li><a href="custom-puzzle.html" class="hover:text-amber-600 transition-colors">Custom Puzzle Atelier</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Concierge & Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Column 2 -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Specialty Niches</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="products.html" class="hover:text-amber-600 transition-colors">Cast Metal Burrs</a></li>
+            <li><a href="products.html" class="hover:text-amber-600 transition-colors">Japanese Yosegi Boxes</a></li>
+            <li><a href="products.html" class="hover:text-amber-600 transition-colors">Speed Cubes & Dodecahedra</a></li>
+            <li><a href="products.html" class="hover:text-amber-600 transition-colors">Blind Mechanical Mazes</a></li>
+            <li><a href="custom-puzzle.html" class="hover:text-amber-600 transition-colors">Laser-Cut Wood Puzzles</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Column 3 -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Concierge & Guarantee</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Lost Piece Replacement</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Cryptic Solution Vault</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Flagship Store Location</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Corporate Team Trunks</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Wholesale & Museum Orders</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-theme flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <p>© 2026 CEREBRUM & CO. All Rights Reserved. Master Puzzle Craftsmen.</p>
+        <div class="flex items-center gap-6">
+          <span class="hover:underline cursor-pointer">Privacy Charter</span>
+          <span class="hover:underline cursor-pointer">Terms of Commission</span>
+          <span class="hover:underline cursor-pointer">Precision Guarantee</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Over / Full Checkout Modal -->
+  <div id="cart-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="cart-modal-heading">
+    <div class="modal-content !max-w-2xl w-full my-4">
+      
+      <!-- Modal Header with Step Indicators -->
+      <div class="p-4 sm:p-5 border-b border-theme flex items-center justify-between bg-theme-primary">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 bg-amber-600 text-white flex items-center justify-center text-xs font-bold">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          </div>
+          <h3 id="cart-modal-heading" class="text-base sm:text-lg font-bold">Collection Trunk & Secure Checkout</h3>
+        </div>
+        <button id="cart-modal-close" class="p-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 text-2xl leading-none" aria-label="Close Cart">&times;</button>
+      </div>
+
+      <!-- Checkout Step Indicators -->
+      <div class="grid grid-cols-3 border-b border-theme bg-theme-secondary text-[11px] font-bold text-center">
+        <div id="checkout-step-1-indicator" class="py-2.5 border-b-2 border-amber-600 text-amber-600 dark:text-amber-400">1. Trunk Items</div>
+        <div id="checkout-step-2-indicator" class="py-2.5 border-b-2 border-transparent text-slate-400">2. Shipping & Pay</div>
+        <div id="checkout-step-3-indicator" class="py-2.5 border-b-2 border-transparent text-slate-400">3. Confirmation</div>
+      </div>
+
+      <!-- STEP 1: CART ITEMS VIEW -->
+      <div id="cart-step-items" class="p-4 sm:p-6 space-y-4">
+        <div id="cart-items-container" class="space-y-3 max-h-[360px] overflow-y-auto pr-1"></div>
+        <div id="cart-empty-message" class="hidden py-12 text-center text-slate-400">
+          <p class="text-base font-bold mb-1">Your trunk is currently vacant.</p>
+          <p class="text-xs">Select any burr, puzzle box, or custom jigsaw from our catalog.</p>
+        </div>
+
+        <div class="pt-4 border-t border-theme space-y-3">
+          <div class="flex gap-2">
+            <input type="text" id="promo-code-input" placeholder="Promo code (Try CEREBRUM15)" class="form-input text-xs py-2 uppercase" />
+            <button id="apply-promo-btn" class="py-2 px-4 border border-theme text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Apply</button>
+          </div>
+          <div id="promo-discount-row" class="hidden flex justify-between text-xs text-emerald-600 font-bold">
+            <span>VIP Code Applied (<span id="promo-code-label"></span>)</span>
+            <span id="promo-discount-amount">-$0.00</span>
+          </div>
+          <div class="pt-2 border-t border-theme flex justify-between text-sm sm:text-base font-extrabold text-slate-900 dark:text-slate-50">
+            <span>Total Amount</span>
+            <span id="cart-modal-total">$0.00</span>
+          </div>
+        </div>
+        <div class="pt-2 flex flex-col sm:flex-row items-center gap-3">
+          <button id="cart-clear-btn" class="w-full sm:w-auto py-2.5 px-4 border border-theme text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800">Clear Trunk</button>
+          <button id="cart-proceed-btn" class="btn-primary w-full sm:flex-1 !py-3">
+            <span>Proceed to Shipping & Payment &rarr;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: SHIPPING ADDRESS & PAYMENT METHOD VIEW -->
+      <form id="checkout-form" novalidate class="hidden p-4 sm:p-6 space-y-5">
+        <div>
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-3 flex items-center gap-2">
+            <span>A. Customer & Delivery Address</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div>
+              <label for="checkout-name" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Full Name *</label>
+              <input type="text" id="checkout-name" required placeholder="John Doe (No numbers)" class="form-input text-xs py-2" />
+              <span id="checkout-name-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="checkout-email" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Email Address *</label>
+              <input type="email" id="checkout-email" required placeholder="solver@domain.com" class="form-input text-xs py-2" />
+              <span id="checkout-email-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="checkout-phone" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Contact Phone *</label>
+              <input type="tel" id="checkout-phone" required placeholder="+1 555-019-2834 (Digits only)" class="form-input text-xs py-2" />
+              <span id="checkout-phone-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="checkout-country" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Country / Region *</label>
+              <select id="checkout-country" class="form-input text-xs py-2">
+                <option value="US">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="DE">Germany</option>
+                <option value="FR">France</option>
+                <option value="JP">Japan</option>
+                <option value="AU">Australia</option>
+                <option value="OTHER">International Dispatch</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="checkout-address" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Street Address *</label>
+              <input type="text" id="checkout-address" required placeholder="Apt, Suite, Unit, Street Number" class="form-input text-xs py-2" />
+              <span id="checkout-address-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="checkout-city" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">City *</label>
+              <input type="text" id="checkout-city" required placeholder="e.g. New York" class="form-input text-xs py-2" />
+              <span id="checkout-city-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="checkout-zip" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">ZIP / Postal Code *</label>
+              <input type="text" id="checkout-zip" required placeholder="e.g. 10001" class="form-input text-xs py-2" />
+              <span id="checkout-zip-error" class="error-message"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-theme">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-2">
+            B. Delivery Method
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <label class="p-3 border border-theme flex items-center justify-between cursor-pointer hover:border-amber-600">
+              <div class="flex items-center gap-2">
+                <input type="radio" name="shipping-option" value="standard" checked class="text-amber-600 focus:ring-0" />
+                <div>
+                  <span class="font-bold block">Standard Tracked</span>
+                  <span class="text-[10px] text-slate-500">3-5 business days</span>
+                </div>
+              </div>
+              <span class="font-bold text-emerald-600">FREE</span>
+            </label>
+            <label class="p-3 border border-theme flex items-center justify-between cursor-pointer hover:border-amber-600">
+              <div class="flex items-center gap-2">
+                <input type="radio" name="shipping-option" value="express" class="text-amber-600 focus:ring-0" />
+                <div>
+                  <span class="font-bold block">Air Courier Express</span>
+                  <span class="text-[10px] text-slate-500">1-2 business days</span>
+                </div>
+              </div>
+              <span class="font-bold text-slate-900 dark:text-slate-100">+$14.00</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-theme">
+          <h4 class="text-xs font-extrabold uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-2">
+            C. Settlement Method
+          </h4>
+          <div class="grid grid-cols-3 gap-2 mb-3">
+            <button type="button" class="payment-method-btn active py-2 border border-slate-900 dark:border-amber-500 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 font-bold text-xs" data-method="card">Card</button>
+            <button type="button" class="payment-method-btn py-2 border border-theme bg-transparent text-slate-700 dark:text-slate-300 font-bold text-xs" data-method="paypal">PayPal</button>
+            <button type="button" class="payment-method-btn py-2 border border-theme bg-transparent text-slate-700 dark:text-slate-300 font-bold text-xs" data-method="wire">Wire</button>
+          </div>
+          <div id="credit-card-panel" class="space-y-3 text-xs">
+            <div>
+              <label for="card-holder" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Cardholder Name *</label>
+              <input type="text" id="card-holder" placeholder="Name as printed on card" class="form-input text-xs py-2" />
+              <span id="card-holder-error" class="error-message"></span>
+            </div>
+            <div>
+              <label for="card-number" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Card Number *</label>
+              <input type="text" id="card-number" maxlength="19" placeholder="4000 1234 5678 9010" class="form-input text-xs py-2 font-mono" />
+              <span id="card-number-error" class="error-message"></span>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label for="card-exp" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Expiration *</label>
+                <input type="text" id="card-exp" maxlength="5" placeholder="MM/YY" class="form-input text-xs py-2 font-mono" />
+                <span id="card-exp-error" class="error-message"></span>
+              </div>
+              <div>
+                <label for="card-cvv" class="block font-bold text-slate-700 dark:text-slate-300 mb-1">CVV / CVC *</label>
+                <input type="password" id="card-cvv" maxlength="4" placeholder="123" class="form-input text-xs py-2 font-mono" />
+                <span id="card-cvv-error" class="error-message"></span>
+              </div>
+            </div>
+          </div>
+          <div id="paypal-payment-panel" class="hidden p-4 bg-theme-secondary border border-theme text-center text-xs">
+            <p class="font-bold text-slate-800 dark:text-slate-200 mb-2">You will be redirected to PayPal to complete your payment securely.</p>
+            <span class="text-[11px] text-slate-500">Zero surcharge for collector society members.</span>
+          </div>
+          <div id="wire-payment-panel" class="hidden p-4 bg-theme-secondary border border-theme text-xs space-y-1">
+            <p class="font-bold text-slate-800 dark:text-slate-200">Bespoke Collector Wire / Invoice</p>
+            <p class="text-slate-500">An official invoice with IBAN / Swift routing will be dispatched to your email for direct settlement.</p>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-theme flex flex-col sm:flex-row items-center justify-between gap-3">
+          <button type="button" id="back-to-items-btn" class="w-full sm:w-auto py-2.5 px-4 border border-theme text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+            &larr; Back to Items
+          </button>
+          <button type="submit" id="place-order-btn" class="btn-primary w-full sm:flex-1 !py-3">
+            <span>Authorize & Place Order (<span id="checkout-final-total">$0.00</span>)</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- STEP 3: ORDER CONFIRMATION RECEIPT VIEW -->
+      <div id="cart-step-receipt" class="hidden p-6 text-center space-y-4">
+        <div class="w-16 h-16 bg-emerald-600 text-white flex items-center justify-center mx-auto text-2xl font-black">
+          ✓
+        </div>
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 block mb-1">Payment Authorized</span>
+          <h3 class="text-2xl font-black">Your Puzzle Order is Confirmed!</h3>
+          <p class="text-xs text-slate-500 mt-1">A detailed tracking ledger and solution guide have been dispatched to your email.</p>
+        </div>
+        <div class="p-4 bg-theme-secondary border border-theme text-left text-xs space-y-2 max-w-md mx-auto">
+          <div class="flex justify-between">
+            <span class="text-slate-400">Order Reference:</span>
+            <span id="receipt-order-id" class="font-mono font-bold text-slate-900 dark:text-slate-100">CRB-2026-00000</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">Total Charged:</span>
+            <span id="receipt-amount-paid" class="font-bold text-amber-600">$0.00</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">Recipient:</span>
+            <span id="receipt-customer-name" class="font-bold">Valued Solver</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">Estimated Dispatch:</span>
+            <span class="font-bold">Next Business Day</span>
+          </div>
+        </div>
+        <button id="receipt-close-btn" class="btn-primary !py-3 !px-8">
+          <span>Continue Exploring Catalog</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Core JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
