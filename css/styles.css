@@ -25,8 +25,8 @@
   --brand-accent-hover: #B45309; /* Amber 700 */
   --brand-accent-text: #FFFFFF;
   
-  /* Hero Overlay - High Contrast Light Mode (Crisp Image + Sharp Text) */
-  --hero-overlay-bg: rgba(255, 255, 255, 0.72);
+  /* Hero Overlay - Completely Transparent (Zero Overlay, 100% Crisp Visuals) */
+  --hero-overlay-bg: transparent;
   
   /* Strict Flat Card Shadow */
   --card-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
@@ -53,8 +53,8 @@ html.dark {
   --brand-accent-hover: #D97706; /* Amber 600 */
   --brand-accent-text: #0B0F19;
   
-  /* Hero Overlay - High Contrast Dark Mode (Crisp Image + Sharp Text) */
-  --hero-overlay-bg: rgba(11, 15, 25, 0.80);
+  /* Hero Overlay - Completely Transparent in Dark Mode */
+  --hero-overlay-bg: transparent;
   
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.40);
   --modal-overlay: rgba(0, 0, 0, 0.85);
@@ -190,7 +190,12 @@ h1, h2, h3, h4, h5, h6,
   color: var(--bg-primary) !important;
 }
 
-/* Hero Section Overlay - 100% Text Legibility & Background Image Clarity */
+/* ==========================================================================
+   HERO SECTION: ZERO OVERLAYS + MAXIMUM HIGH-CONTRAST TEXT SHADOWS
+   Background images are 100% natural, crisp, unmasked, and visible.
+   Text elements utilize multi-directional contour contrast shadows
+   for razor-sharp legibility in both Light Mode and Dark Mode.
+   ========================================================================== */
 .hero-wrapper {
   position: relative;
   background-size: cover;
@@ -199,28 +204,155 @@ h1, h2, h3, h4, h5, h6,
   isolation: isolate;
 }
 
+/* 100% Overlay Removal */
 .hero-scrim {
-  background-color: var(--hero-overlay-bg);
-  backdrop-filter: none !important; /* STRICTLY NO GLASSMORPHISM OR BLUR */
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
-/* Crisp text contrast enhancement against hero background images */
+/* Light Mode: Razor-Sharp Contrast Contour Shadows against Raw Image */
 .hero-wrapper h1,
 .hero-wrapper .hero-heading {
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
+  color: #0F172A !important;
+  text-shadow: 
+    0 0 20px #FFFFFF,
+    0 0 10px #FFFFFF,
+    0 2px 4px #FFFFFF,
+    0 -1px 2px #FFFFFF,
+    1px 1px 2px #FFFFFF,
+    -1px -1px 2px #FFFFFF,
+    1px -1px 2px #FFFFFF,
+    -1px 1px 2px #FFFFFF,
+    0 4px 12px rgba(255, 255, 255, 0.95);
 }
 
+.hero-wrapper .section-subtitle,
+.hero-wrapper p {
+  color: #0F172A !important;
+  font-weight: 600 !important;
+  text-shadow: 
+    0 0 14px #FFFFFF,
+    0 0 8px #FFFFFF,
+    0 1px 3px #FFFFFF,
+    0 -1px 1px #FFFFFF,
+    1px 1px 2px #FFFFFF,
+    -1px -1px 2px #FFFFFF,
+    1px -1px 2px #FFFFFF,
+    -1px 1px 2px #FFFFFF,
+    0 2px 6px rgba(255, 255, 255, 0.95);
+}
+
+.hero-wrapper .border-t,
+.hero-wrapper .grid {
+  border-color: rgba(15, 23, 42, 0.4) !important;
+}
+
+.hero-wrapper .border-t span,
+.hero-wrapper .grid span,
+.hero-wrapper span:not(.btn-primary span):not(.btn-secondary span):not(.inline-flex span) {
+  color: #0F172A !important;
+  text-shadow: 
+    0 0 12px #FFFFFF,
+    0 0 6px #FFFFFF,
+    1px 1px 1px #FFFFFF,
+    -1px -1px 1px #FFFFFF,
+    0 1px 3px rgba(255, 255, 255, 0.95);
+}
+
+.hero-wrapper .inline-flex {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18) !important;
+}
+
+.hero-wrapper .btn-secondary {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  color: #0F172A !important;
+  border-color: #0F172A !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18) !important;
+}
+
+.hero-wrapper .btn-secondary:hover {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+}
+
+.hero-wrapper .btn-primary span,
+.hero-wrapper .btn-secondary span,
+.hero-wrapper .inline-flex span {
+  text-shadow: none !important;
+}
+
+/* Dark Mode: Razor-Sharp Deep Black Contrast Shadows against Raw Image */
 html.dark .hero-wrapper h1,
 html.dark .hero-wrapper .hero-heading {
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.95);
+  color: #F8FAFC !important;
+  text-shadow: 
+    0 0 24px #000000,
+    0 0 12px #000000,
+    0 3px 6px #000000,
+    0 -1px 2px #000000,
+    2px 2px 3px #000000,
+    -2px -2px 3px #000000,
+    2px -2px 3px #000000,
+    -2px 2px 3px #000000,
+    0 5px 16px rgba(0, 0, 0, 0.95);
 }
 
-.hero-wrapper .section-subtitle {
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+html.dark .hero-wrapper .section-subtitle,
+html.dark .hero-wrapper p {
+  color: #F8FAFC !important;
+  font-weight: 500 !important;
+  text-shadow: 
+    0 0 16px #000000,
+    0 0 8px #000000,
+    0 2px 4px #000000,
+    0 -1px 1px #000000,
+    1px 1px 2px #000000,
+    -1px -1px 2px #000000,
+    1px -1px 2px #000000,
+    -1px 1px 2px #000000,
+    0 3px 8px rgba(0, 0, 0, 0.95);
 }
 
-html.dark .hero-wrapper .section-subtitle {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+html.dark .hero-wrapper .border-t,
+html.dark .hero-wrapper .grid {
+  border-color: rgba(248, 250, 252, 0.4) !important;
+}
+
+html.dark .hero-wrapper .border-t span,
+html.dark .hero-wrapper .grid span,
+html.dark .hero-wrapper span:not(.btn-primary span):not(.btn-secondary span):not(.inline-flex span) {
+  color: #F8FAFC !important;
+  text-shadow: 
+    0 0 14px #000000,
+    0 0 7px #000000,
+    1px 1px 2px #000000,
+    -1px -1px 2px #000000,
+    0 2px 4px rgba(0, 0, 0, 1);
+}
+
+html.dark .hero-wrapper .inline-flex {
+  background-color: rgba(15, 23, 42, 0.96) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7) !important;
+}
+
+html.dark .hero-wrapper .btn-secondary {
+  background-color: rgba(15, 23, 42, 0.96) !important;
+  color: #F8FAFC !important;
+  border-color: #F8FAFC !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7) !important;
+}
+
+html.dark .hero-wrapper .btn-secondary:hover {
+  background-color: #F8FAFC !important;
+  color: #0B0F19 !important;
+}
+
+html.dark .hero-wrapper .btn-primary span,
+html.dark .hero-wrapper .btn-secondary span,
+html.dark .hero-wrapper .inline-flex span {
+  text-shadow: none !important;
 }
 
 /* Strict Flat Cards - Clean Modern Architectural Aesthetics */
