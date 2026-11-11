@@ -273,50 +273,113 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION 2: FILTER & CONTROLS TOOLBAR
-       Difficulty Level Filter Tabs & Sort Selection
+       SECTION 2: CLEAN, RESPONSIVE PRODUCT FILTER & TOOLBAR
+       Organize Products by Age Group, Difficulty, Piece Count, Material, & Solve Time
        ========================================================================== -->
-  <section class="py-4 sm:py-6 bg-theme-secondary border-b border-theme sticky top-16 sm:top-20 z-30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4">
+  <section class="py-4 bg-theme-secondary border-b border-theme sticky top-16 sm:top-20 z-30 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+      
+      <!-- Top Row: Category Tabs & Sort Selector -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
         
-        <!-- Difficulty Filter Buttons -->
-        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 w-full lg:w-auto" role="tablist" aria-label="Filter puzzles by difficulty">
-          <span class="text-xs font-bold uppercase tracking-wider text-slate-500 mr-1 sm:mr-2 hidden sm:inline">Tier:</span>
-          <button class="filter-btn px-2.5 sm:px-3.5 py-1.5 sm:py-2 border border-theme text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap" data-filter="All">All Tiers</button>
-          <button class="filter-btn px-2.5 sm:px-3.5 py-1.5 sm:py-2 border border-theme text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap" data-filter="Easy">Easy (Lvl 1-3)</button>
-          <button class="filter-btn px-2.5 sm:px-3.5 py-1.5 sm:py-2 border border-theme text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap" data-filter="Medium">Medium (Lvl 4-6)</button>
-          <button class="filter-btn px-2.5 sm:px-3.5 py-1.5 sm:py-2 border border-theme text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap" data-filter="Hard">Hard (Lvl 7-8)</button>
-          <button class="filter-btn px-2.5 sm:px-3.5 py-1.5 sm:py-2 border border-theme text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap" data-filter="Master">Master (Lvl 9-10)</button>
+        <!-- Quick Difficulty Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-1.5" role="tablist" aria-label="Filter puzzles by difficulty tier">
+          <button type="button" class="filter-tab-btn active px-3 py-1.5 border border-theme text-xs font-black uppercase tracking-wider transition-colors bg-slate-900 text-white dark:bg-amber-500 dark:text-slate-950 border-slate-900 dark:border-amber-500" data-filter="All">All Tiers (12)</button>
+          <button type="button" class="filter-tab-btn px-3 py-1.5 border border-theme text-xs font-black uppercase tracking-wider transition-colors bg-theme-primary text-slate-950 dark:text-white hover:border-amber-600" data-filter="Easy">Easy (Lvl 1-3)</button>
+          <button type="button" class="filter-tab-btn px-3 py-1.5 border border-theme text-xs font-black uppercase tracking-wider transition-colors bg-theme-primary text-slate-950 dark:text-white hover:border-amber-600" data-filter="Medium">Medium (Lvl 4-6)</button>
+          <button type="button" class="filter-tab-btn px-3 py-1.5 border border-theme text-xs font-black uppercase tracking-wider transition-colors bg-theme-primary text-slate-950 dark:text-white hover:border-amber-600" data-filter="Hard">Hard (Lvl 7-8)</button>
+          <button type="button" class="filter-tab-btn px-3 py-1.5 border border-theme text-xs font-black uppercase tracking-wider transition-colors bg-theme-primary text-slate-950 dark:text-white hover:border-amber-600" data-filter="Master">Master (Lvl 9-10)</button>
         </div>
 
         <!-- Sort Select & Results Counter -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between lg:justify-end gap-2.5 sm:gap-4 w-full lg:w-auto pt-2 lg:pt-0 border-t lg:border-t-0 border-theme/40">
-          <span id="products-count" class="text-xs font-semibold text-slate-500 whitespace-nowrap">Showing 12 of 12 Specialty Puzzles</span>
-          <div class="flex items-center gap-2 flex-shrink-0">
-            <label for="product-sort-select" class="text-xs font-bold text-slate-500 uppercase tracking-wider whitespace-nowrap">Sort:</label>
-            <select id="product-sort-select" class="p-1.5 sm:p-2 bg-theme-primary border border-theme text-xs font-semibold rounded-none focus:outline-none focus:border-amber-600">
+        <div class="flex items-center justify-between md:justify-end gap-3 flex-shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-theme/40">
+          <span id="products-count" class="text-xs font-black text-slate-950 dark:text-white whitespace-nowrap">Showing 12 Puzzles</span>
+          <div class="flex items-center gap-1.5">
+            <label for="product-sort-select" class="text-xs font-black text-slate-950 dark:text-white uppercase tracking-wider">Sort:</label>
+            <select id="product-sort-select" class="py-1 px-2 bg-theme-primary border border-theme text-xs font-bold rounded-none focus:outline-none focus:border-amber-600 text-slate-950 dark:text-white">
               <option value="featured">Featured Curations</option>
+              <option value="age-low">Age: Youngest First (8+ &rarr; 18+)</option>
+              <option value="age-high">Age: Grandmaster First (18+ &rarr; 8+)</option>
+              <option value="difficulty">Difficulty: Low to High</option>
+              <option value="difficulty-high">Difficulty: High to Low</option>
+              <option value="time-low">Solving Time: Quickest First</option>
+              <option value="time-high">Solving Time: Longest First</option>
+              <option value="pieces-low">Piece Count: Fewest First</option>
+              <option value="pieces-high">Piece Count: Most First</option>
               <option value="price-low">Price: Low to High</option>
               <option value="price-high">Price: High to Low</option>
-              <option value="difficulty">Difficulty: Low to High</option>
               <option value="rating">Highest Solver Rating</option>
             </select>
           </div>
         </div>
 
       </div>
+
+      <!-- Bottom Row: 4 Clean Dimension Dropdowns (Age, Piece Count, Material, Solve Time) -->
+      <div class="pt-2 border-t border-theme/40 flex flex-wrap items-center gap-2 text-xs">
+        <span class="text-[11px] font-black uppercase tracking-wider text-slate-950 dark:text-white mr-1 flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+          <span>Filter:</span>
+        </span>
+
+        <!-- 1. Age Group -->
+        <select id="filter-age-select" class="py-1 px-2.5 bg-theme-primary border border-theme text-xs font-bold rounded-none focus:outline-none focus:border-amber-600 text-slate-950 dark:text-white flex-1 min-w-[120px]">
+          <option value="all">🎯 All Ages</option>
+          <option value="8">Ages 8+ (Kids)</option>
+          <option value="10">Ages 10+ (Pre-Teens)</option>
+          <option value="12">Ages 12+ (Teens)</option>
+          <option value="14">Ages 14+ (Enthusiasts)</option>
+          <option value="16">Ages 16+ (Advanced)</option>
+          <option value="18">Ages 18+ (Adults)</option>
+        </select>
+
+        <!-- 2. Piece Count -->
+        <select id="filter-pieces-select" class="py-1 px-2.5 bg-theme-primary border border-theme text-xs font-bold rounded-none focus:outline-none focus:border-amber-600 text-slate-950 dark:text-white flex-1 min-w-[120px]">
+          <option value="all">🧩 All Piece Counts</option>
+          <option value="single">1 Piece (Chamber)</option>
+          <option value="2-5">2 – 5 Pieces</option>
+          <option value="6-12">6 – 12 Pieces</option>
+          <option value="20+">20+ Pieces</option>
+        </select>
+
+        <!-- 3. Material -->
+        <select id="filter-material-select" class="py-1 px-2.5 bg-theme-primary border border-theme text-xs font-bold rounded-none focus:outline-none focus:border-amber-600 text-slate-950 dark:text-white flex-1 min-w-[120px]">
+          <option value="all">🪵 All Materials</option>
+          <option value="wood">Hardwood (Beech & Maple)</option>
+          <option value="zinc">Die-Cast Zinc Alloy</option>
+          <option value="brass">Solid Brass & Bronze</option>
+          <option value="polymer">Precision Polymer</option>
+        </select>
+
+        <!-- 4. Estimated Solving Time -->
+        <select id="filter-time-select" class="py-1 px-2.5 bg-theme-primary border border-theme text-xs font-bold rounded-none focus:outline-none focus:border-amber-600 text-slate-950 dark:text-white flex-1 min-w-[120px]">
+          <option value="all">⏱️ All Solve Times</option>
+          <option value="quick">&lt; 30 Minutes</option>
+          <option value="moderate">45 Mins – 3 Hours</option>
+          <option value="extended">4 – 10 Hours</option>
+          <option value="endurance">15 – 60+ Hours</option>
+        </select>
+
+        <!-- Clear Button -->
+        <button id="clear-all-filters-btn" class="py-1 px-3 border border-theme text-xs font-black uppercase text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors hidden whitespace-nowrap">
+          Reset Filters
+        </button>
+      </div>
+
+      <!-- Active Filter Chips Container -->
+      <div id="active-filter-chips" class="flex flex-wrap items-center gap-1.5 pt-1 empty:hidden"></div>
+
     </div>
   </section>
 
   <!-- ==========================================================================
        SECTION 3: MAIN PRODUCT CATALOG GRID
-       Vanilla JS Driven Dynamic Grid (12 Items) + Specs Quick-View Modal
+       100% Responsive Uniform Grid (4-col Desktop, 3-col Laptop, 2-col Tablet, 1-col Mobile)
        ========================================================================== -->
-  <section class="py-16 bg-theme-primary border-b border-theme min-h-[600px]">
+  <section class="py-12 sm:py-16 bg-theme-primary border-b border-theme min-h-[600px]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <!-- Rendered by js/products.js -->
+        <!-- Rendered cleanly by js/products.js in a full balanced grid -->
       </div>
     </div>
   </section>
@@ -334,57 +397,72 @@
 
   <!-- ==========================================================================
        SECTION 4: COMPREHENSIVE DIFFICULTY TIER BREAKDOWN
-       Technical Reference Matrix
+       Technical Reference Matrix with Target Age Group
        ========================================================================== -->
   <section class="py-16 bg-theme-secondary border-b border-theme">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-12">
         <span class="text-xs font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400 block mb-2">Scientific Hierarchy</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold mb-3">Understanding Difficulty Tiers</h2>
+        <h2 class="text-2xl sm:text-3xl font-extrabold mb-3">Understanding Difficulty Tiers & Age Guidance</h2>
         <p class="section-subtitle text-xs sm:text-sm leading-relaxed">
-          How our curatorial board benchmarks mechanical puzzles to prevent solver discouragement.
+          How our curatorial board benchmarks mechanical puzzles to match age thresholds and prevent solver discouragement.
         </p>
       </div>
 
       <div class="overflow-x-auto border border-theme bg-theme-primary">
         <table class="w-full text-left text-xs">
-          <thead class="bg-theme-secondary border-b border-theme text-slate-600 dark:text-slate-400 uppercase font-bold tracking-wider">
+          <thead class="bg-theme-secondary border-b border-theme text-slate-950 dark:text-white uppercase font-black tracking-wider text-xs sm:text-sm">
             <tr>
               <th class="p-4">Tier Name</th>
               <th class="p-4">Levels</th>
+              <th class="p-4">Target Age Group</th>
               <th class="p-4">Expected Solve Window</th>
+              <th class="p-4">Typical Piece Count</th>
+              <th class="p-4">Primary Materials</th>
               <th class="p-4">Internal Mechanism Archetype</th>
               <th class="p-4">Recommended For</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-theme">
+          <tbody class="divide-y divide-theme text-slate-950 dark:text-white font-semibold text-xs sm:text-sm">
             <tr>
-              <td class="p-4 font-bold text-emerald-700 dark:text-emerald-400">Easy (Novice)</td>
-              <td class="p-4 font-mono font-bold">1 – 3</td>
-              <td class="p-4">10 – 30 Minutes</td>
-              <td class="p-4 text-slate-500">Planar dissection, 4-piece coordinate assemblies, basic 3D cubes</td>
-              <td class="p-4">Younger solvers, beginners, relaxed desk conversation pieces</td>
+              <td class="p-4 font-black text-emerald-700 dark:text-emerald-400">Easy (Novice)</td>
+              <td class="p-4 font-mono font-black text-slate-950 dark:text-white">1 – 3</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">Ages 8+ (Introductory)</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">10 – 30 Minutes</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">4 – 7 Pieces</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Beech Wood, Magnetic ABS</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Planar dissection, 4-piece coordinate assemblies, basic 3D cubes</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Younger solvers, beginners, relaxed desk conversation pieces</td>
             </tr>
             <tr>
-              <td class="p-4 font-bold text-blue-700 dark:text-blue-400">Medium (Adept)</td>
-              <td class="p-4 font-mono font-bold">4 – 6</td>
-              <td class="p-4">1 – 3 Hours</td>
-              <td class="p-4 text-slate-500">Sequential slide tracks, tumbling cipher tumblers, rotational gyros</td>
-              <td class="p-4">Enthusiasts, spatial hobbyists, team brainstorming warm-ups</td>
+              <td class="p-4 font-black text-blue-700 dark:text-blue-400">Medium (Adept)</td>
+              <td class="p-4 font-mono font-black text-slate-950 dark:text-white">4 – 6</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">Ages 10 – 12+ (Teens & Adepts)</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">45 Mins – 3 Hours</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">1 – 3 Pieces (Chambers)</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Die-Cast Zinc, Antiqued Brass, Polycarbonate</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Sequential slide tracks, tumbling cipher tumblers, rotational gyros</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Enthusiasts, spatial hobbyists, team brainstorming warm-ups</td>
             </tr>
             <tr>
-              <td class="p-4 font-bold text-orange-700 dark:text-orange-400">Hard (Master)</td>
-              <td class="p-4 font-mono font-bold">7 – 8</td>
-              <td class="p-4">4 – 10 Hours</td>
-              <td class="p-4 text-slate-500">Cast spiral disentanglement, hidden ball pins, 72-move trick boxes</td>
-              <td class="p-4">Experienced collectors, mathematicians, rigorous problem solvers</td>
+              <td class="p-4 font-black text-orange-700 dark:text-orange-400">Hard (Master)</td>
+              <td class="p-4 font-mono font-black text-slate-950 dark:text-white">7 – 8</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">Ages 14+ (Enthusiasts)</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">4 – 10 Hours</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">1 – 12 Pieces (Polyhedra)</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Heavy Metal Alloy, Yosegi Hardwoods, Nylon/ABS</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Cast spiral disentanglement, hidden ball pins, 72-move trick boxes</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Experienced collectors, mathematicians, rigorous problem solvers</td>
             </tr>
             <tr>
-              <td class="p-4 font-bold text-rose-700 dark:text-rose-400">Master (Grandmaster)</td>
-              <td class="p-4 font-mono font-bold">9 – 10</td>
-              <td class="p-4">20 – 60+ Hours</td>
-              <td class="p-4 text-slate-500">Blind internal labyrinths, non-euclidean mazes, titanium burrs</td>
-              <td class="p-4">Mensa medalists, unassisted world record pursuers</td>
+              <td class="p-4 font-black text-rose-700 dark:text-rose-400">Master (Grandmaster)</td>
+              <td class="p-4 font-mono font-black text-slate-950 dark:text-white">9 – 10</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">Ages 16 – 18+ (Grandmasters)</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">15 – 60+ Hours</td>
+              <td class="p-4 font-black text-slate-950 dark:text-white">1 Core Chamber to 24 Machined Billets</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Solid Brass & Bronze, Aircraft Aluminum</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Blind internal labyrinths, non-euclidean mazes, titanium burrs</td>
+              <td class="p-4 font-semibold text-slate-950 dark:text-white">Mensa medalists, unassisted world record pursuers</td>
             </tr>
           </tbody>
         </table>
@@ -417,23 +495,25 @@
           </div>
           <div class="flex-1 flex flex-col justify-between h-full">
             <div>
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-2 py-0.5 bg-emerald-700 text-white font-bold text-[10px] uppercase">Save $38</span>
-                <span class="text-xs text-slate-400">3 Puzzles Included</span>
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 bg-emerald-700 text-white font-black text-[10px] uppercase">Save $38</span>
+                <span class="badge-age">Ages 12+</span>
+                <span class="text-xs font-black text-slate-950 dark:text-white">3 Puzzles • 14 Parts</span>
               </div>
-              <h3 class="text-xl font-bold mb-2">The Novice-to-Pro Progression Trunk</h3>
-              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              <h3 class="text-xl font-black mb-2 text-slate-950 dark:text-white">The Novice-to-Pro Progression Trunk</h3>
+              <p class="text-xs text-slate-950 dark:text-white font-semibold leading-relaxed mb-4">
                 Contains Soma Cube (Lvl 2), Vortex Cast Zinc (Lvl 5), and Hanayama Enigma (Lvl 8). The definitive curriculum for escalating your spatial IQ.
               </p>
-              <div class="text-xs space-y-1 mb-4 text-slate-500">
-                <div>• Walnut storage caddy included</div>
-                <div>• Detailed hints booklet sealed in envelope</div>
+              <div class="text-xs space-y-1 mb-4 text-slate-950 dark:text-white font-bold">
+                <div>• Materials: Beech Wood, Die-Cast Zinc & Heavy Alloy</div>
+                <div>• Est. Solve Time: 20 Mins to 8 Hours Progression</div>
+                <div>• Walnut storage caddy and hint booklets included</div>
               </div>
             </div>
             <div class="flex items-center justify-between pt-4 border-t border-theme">
               <div>
                 <span class="text-xs text-slate-400 line-through mr-1">$138.00</span>
-                <span class="text-2xl font-bold text-slate-900 dark:text-slate-100">$99.00</span>
+                <span class="text-2xl font-black text-slate-950 dark:text-white">$99.00</span>
               </div>
               <button onclick="window.addToCartFromCard(this, 'bundle-01', 'The Novice-to-Pro Progression Trunk', 99.00, 'Hard')" class="btn-primary !py-2 !px-4 text-xs">
                 Add Bundle
@@ -449,23 +529,25 @@
           </div>
           <div class="flex-1 flex flex-col justify-between h-full">
             <div>
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-2 py-0.5 bg-amber-600 text-white font-bold text-[10px] uppercase">Save $95</span>
-                <span class="text-xs text-slate-400">Elite Series</span>
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 bg-amber-600 text-white font-black text-[10px] uppercase">Save $95</span>
+                <span class="badge-age">Ages 16+</span>
+                <span class="text-xs font-black text-slate-950 dark:text-white">Elite Master Series</span>
               </div>
-              <h3 class="text-xl font-bold mb-2">The Mensa Grandmaster Collector Set</h3>
-              <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              <h3 class="text-xl font-black mb-2 text-slate-950 dark:text-white">The Mensa Grandmaster Collector Set</h3>
+              <p class="text-xs text-slate-950 dark:text-white font-semibold leading-relaxed mb-4">
                 Comprises Revomaze V1 Brass (Lvl 10), Karakuri 72-Step Box (Lvl 7), and Isis Discovery Sphere (Lvl 9). The pinnacle of mechanical teasers.
               </p>
-              <div class="text-xs space-y-1 mb-4 text-slate-500">
-                <div>• Leather-bound registry ledger included</div>
-                <div>• Direct concierge verification access</div>
+              <div class="text-xs space-y-1 mb-4 text-slate-950 dark:text-white font-bold">
+                <div>• Materials: Solid Brass, Yosegi Hardwoods & Aircraft Aluminum</div>
+                <div>• Est. Solve Time: 15 to 60+ Hours Multi-Week Gauntlet</div>
+                <div>• Leather-bound registry ledger & direct concierge access</div>
               </div>
             </div>
             <div class="flex items-center justify-between pt-4 border-t border-theme">
               <div>
                 <span class="text-xs text-slate-400 line-through mr-1">$640.00</span>
-                <span class="text-2xl font-bold text-slate-900 dark:text-slate-100">$545.00</span>
+                <span class="text-2xl font-black text-slate-950 dark:text-white">$545.00</span>
               </div>
               <button onclick="window.addToCartFromCard(this, 'bundle-02', 'The Mensa Grandmaster Collector Set', 545.00, 'Master')" class="btn-primary !py-2 !px-4 text-xs">
                 Add Bundle
@@ -488,24 +570,24 @@
         
         <div class="p-6 bg-theme-primary border border-theme">
           <div class="w-10 h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-bold text-base mb-4">01</div>
-          <h3 class="text-base font-bold mb-2">Zero Lost Piece Clause</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          <h3 class="text-base font-bold mb-2 text-slate-950 dark:text-white">Zero Lost Piece Clause</h3>
+          <p class="text-xs text-slate-950 dark:text-white font-semibold leading-relaxed">
             If a mechanical pin, ball-bearing, or jigsaw segment ever vanishes, register your item number for a complimentary precision replacement.
           </p>
         </div>
 
         <div class="p-6 bg-theme-primary border border-theme">
           <div class="w-10 h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-bold text-base mb-4">02</div>
-          <h3 class="text-base font-bold mb-2">Cryptic Progressive Clues</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          <h3 class="text-base font-bold mb-2 text-slate-950 dark:text-white">Cryptic Progressive Clues</h3>
+          <p class="text-xs text-slate-950 dark:text-white font-semibold leading-relaxed">
             Never look up full solutions that ruin the mystery. Access our progressive hint portal with subtle directional nudges to keep you in flow.
           </p>
         </div>
 
         <div class="p-6 bg-theme-primary border border-theme">
           <div class="w-10 h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-bold text-base mb-4">03</div>
-          <h3 class="text-base font-bold mb-2">Purity of Materials</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          <h3 class="text-base font-bold mb-2 text-slate-950 dark:text-white">Purity of Materials</h3>
+          <p class="text-xs text-slate-950 dark:text-white font-semibold leading-relaxed">
             Every product is backed by a 10-year mechanical integrity warranty against metal fatigue, gear stripping, and timber delamination.
           </p>
         </div>
@@ -518,7 +600,7 @@
        GLOBAL FOOTER (Identical across all 5 pages)
        Links back to index.html + Social icons (X, Instagram, LinkedIn, etc.)
        ========================================================================== -->
-  <footer class="bg-theme-primary border-t border-theme py-16 text-slate-600 dark:text-slate-400 text-sm">
+  <footer class="bg-theme-primary border-t border-theme py-16 text-slate-950 dark:text-white text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
         
@@ -531,11 +613,11 @@
               </svg>
             </div>
             <div class="flex flex-col">
-              <span class="text-xl font-extrabold tracking-wider text-slate-900 dark:text-slate-50 uppercase">CEREBRUM</span>
-              <span class="text-[10px] tracking-widest font-semibold uppercase text-slate-500 dark:text-slate-400 -mt-1">Puzzle Specialty Store</span>
+              <span class="text-xl font-extrabold tracking-wider text-slate-950 dark:text-white uppercase">CEREBRUM</span>
+              <span class="text-[10px] tracking-widest font-black uppercase text-slate-950 dark:text-white -mt-1">Puzzle Specialty Store</span>
             </div>
           </a>
-          <p class="text-xs leading-relaxed max-w-sm mb-6 text-slate-500 dark:text-slate-400">
+          <p class="text-xs leading-relaxed max-w-sm mb-6 text-slate-950 dark:text-white font-semibold">
             Cerebrum & Co. is the premier destination for serious puzzle solvers, mechanical teaser collectors, and discerning gift seekers worldwide.
           </p>
           <!-- Social Icons (X, Instagram, LinkedIn) -->
@@ -554,8 +636,8 @@
 
         <!-- Links Column 1 -->
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Site Architecture</h4>
-          <ul class="space-y-2 text-xs">
+          <h4 class="text-xs font-black uppercase tracking-wider text-slate-950 dark:text-white mb-4">Site Architecture</h4>
+          <ul class="space-y-2 text-xs font-bold text-slate-950 dark:text-white">
             <li><a href="index.html" class="hover:text-amber-600 transition-colors">Signature Collection</a></li>
             <li><a href="home-2.html" class="hover:text-amber-600 transition-colors">Collector Vault</a></li>
             <li><a href="about.html" class="hover:text-amber-600 transition-colors">About Atelier</a></li>
@@ -567,8 +649,8 @@
 
         <!-- Links Column 2 -->
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Specialty Niches</h4>
-          <ul class="space-y-2 text-xs">
+          <h4 class="text-xs font-black uppercase tracking-wider text-slate-950 dark:text-white mb-4">Specialty Niches</h4>
+          <ul class="space-y-2 text-xs font-bold text-slate-950 dark:text-white">
             <li><a href="products.html" class="hover:text-amber-600 transition-colors">Cast Metal Burrs</a></li>
             <li><a href="products.html" class="hover:text-amber-600 transition-colors">Japanese Yosegi Boxes</a></li>
             <li><a href="products.html" class="hover:text-amber-600 transition-colors">Speed Cubes & Dodecahedra</a></li>
@@ -579,8 +661,8 @@
 
         <!-- Links Column 3 -->
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 mb-4">Concierge & Guarantee</h4>
-          <ul class="space-y-2 text-xs">
+          <h4 class="text-xs font-black uppercase tracking-wider text-slate-950 dark:text-white mb-4">Concierge & Guarantee</h4>
+          <ul class="space-y-2 text-xs font-bold text-slate-950 dark:text-white">
             <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Lost Piece Replacement</a></li>
             <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Cryptic Solution Vault</a></li>
             <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Flagship Store Location</a></li>
@@ -591,7 +673,7 @@
 
       </div>
 
-      <div class="pt-8 border-t border-theme flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div class="pt-8 border-t border-theme flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-slate-950 dark:text-white">
         <p>© 2026 CEREBRUM & CO. All Rights Reserved. Master Puzzle Craftsmen.</p>
         <div class="flex items-center gap-6">
           <span class="hover:underline cursor-pointer">Privacy Charter</span>

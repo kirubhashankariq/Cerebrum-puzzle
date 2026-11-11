@@ -368,10 +368,10 @@
 
     if (cart.length === 0) {
       modalItemsContainer.innerHTML = `
-        <div class="py-12 text-center text-slate-500 dark:text-slate-400">
+        <div class="py-12 text-center text-slate-950 dark:text-white">
           <svg class="w-12 h-12 mx-auto mb-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-          <p class="font-bold text-base text-slate-800 dark:text-slate-200">Your puzzle trunk is empty.</p>
-          <p class="text-xs mt-1 max-w-xs mx-auto">Explore our cast metal burrs, wooden boxes, and speed cubes to begin solving.</p>
+          <p class="font-black text-base text-slate-950 dark:text-white">Your puzzle trunk is empty.</p>
+          <p class="text-xs font-semibold mt-1 max-w-xs mx-auto text-slate-950 dark:text-white">Explore our cast metal burrs, wooden boxes, and speed cubes to begin solving.</p>
           <a href="products.html" class="btn-primary inline-flex mt-4 !py-2 !px-4 text-xs">Browse Specialty Catalog</a>
         </div>
       `;
@@ -401,10 +401,10 @@
           <img src="${item.image}" alt="${item.name}" class="w-14 h-14 sm:w-16 sm:h-16 object-cover border border-theme flex-shrink-0" />
           <div class="flex-1 min-w-0">
             <h4 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-slate-100 truncate">${item.name}</h4>
-            <div class="flex items-center gap-2 mt-1 text-xs">
+            <div class="flex items-center gap-2 mt-1 text-xs font-semibold">
               <span class="font-bold text-amber-700 dark:text-amber-400">$${item.price.toFixed(2)}</span>
               <span class="text-slate-400">•</span>
-              <span class="text-slate-500">${item.difficulty} Tier</span>
+              <span class="text-slate-950 dark:text-white font-bold">${item.difficulty} Tier</span>
             </div>
             <!-- Quantity Increment / Decrement Controls -->
             <div class="flex items-center gap-1.5 mt-2">

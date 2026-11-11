@@ -6,11 +6,11 @@
 
 /* Design Tokens & Universal Theme Variables */
 :root {
-  /* Strict Unified Heading Color Across Entire Project */
-  --heading-color: #0F172A; /* Slate 900 */
-  --subheading-color: #334155; /* Slate 700 */
-  --body-text-color: #1E293B; /* Slate 800 */
-  --muted-text-color: #64748B; /* Slate 500 */
+  /* Strict Unified Heading & Text Colors Across Entire Project */
+  --heading-color: #0F172A; /* Slate 900 - rich deep black-slate */
+  --subheading-color: #0F172A; /* Slate 900 - dark, bold, high-contrast */
+  --body-text-color: #0F172A; /* Slate 900 - rich solid dark text */
+  --muted-text-color: #0F172A; /* Slate 900 - dark, sharp, never faded */
   
   /* High-Contrast Flat Theme Palette */
   --bg-primary: #FFFFFF;
@@ -34,11 +34,11 @@
 }
 
 html.dark {
-  /* Strict Unified Heading Color Across Entire Project in Dark Mode */
-  --heading-color: #F8FAFC; /* Slate 50 */
-  --subheading-color: #E2E8F0; /* Slate 200 */
-  --body-text-color: #CBD5E1; /* Slate 300 */
-  --muted-text-color: #94A3B8; /* Slate 400 */
+  /* Strict Unified Heading & Text Colors in Dark Mode */
+  --heading-color: #FFFFFF; /* Pure Bright White */
+  --subheading-color: #FFFFFF; /* Pure Bright White */
+  --body-text-color: #F8FAFC; /* Slate 50 - high-visibility crisp white */
+  --muted-text-color: #F8FAFC; /* Slate 50 */
   
   /* Dark Mode High-Contrast Flat Theme Palette */
   --bg-primary: #0B0F19; /* Pure Deep Obsidian */
@@ -112,6 +112,181 @@ h1, h2, h3, h4, h5, h6,
 .section-subtitle,
 .subheading-unified {
   color: var(--subheading-color) !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   GLOBAL HIGH-CONTRAST TEXT ENHANCEMENT
+   Ensure all paragraph text, card descriptions, table cells, labels, and metadata
+   are rich, deep dark (#0F172A / #020617), bold and ultra-crisp in Light Mode,
+   and bright high-contrast (#FFFFFF / #F8FAFC) in Dark Mode across the entire project.
+   ========================================================================== */
+p,
+table,
+td,
+th,
+li,
+label,
+dd,
+dt {
+  color: var(--body-text-color);
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Card descriptions, article body, specifications, and metadata */
+.flat-card p,
+.flat-card li,
+.flat-card dt,
+.flat-card dd,
+.flat-card span:not([class*="badge-"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-red"]):not(.btn-primary span),
+article p,
+article li,
+article dt,
+article dd,
+article span:not([class*="badge-"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-red"]):not(.btn-primary span) {
+  color: #0F172A;
+  font-weight: 500;
+}
+
+html.dark .flat-card p,
+html.dark .flat-card li,
+html.dark .flat-card dt,
+html.dark .flat-card dd,
+html.dark .flat-card span:not([class*="badge-"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-red"]):not(.btn-primary span),
+html.dark article p,
+html.dark article li,
+html.dark article dt,
+html.dark article dd,
+html.dark article span:not([class*="badge-"]):not([class*="text-amber"]):not([class*="text-emerald"]):not([class*="text-red"]):not(.btn-primary span) {
+  color: #FFFFFF;
+}
+
+/* Any element with text-white or dark background inside cards/articles MUST ALWAYS have pure white text */
+.flat-card .badge-pieces,
+.flat-card .badge-piece-count,
+.flat-card .badge-age,
+.flat-card .text-white,
+.flat-card [class*="bg-slate-900"],
+.flat-card [class*="bg-slate-950"],
+.flat-card [class*="bg-black"],
+article .badge-pieces,
+article .badge-piece-count,
+article .badge-age,
+article .text-white,
+article [class*="bg-slate-900"],
+article [class*="bg-slate-950"],
+article [class*="bg-black"] {
+  color: #FFFFFF !important;
+}
+
+/* Project-wide text overrides for faded slate/gray colors - FORCED DARK & CRISP */
+.text-slate-800,
+.text-slate-700,
+.text-slate-600,
+.text-slate-500,
+.text-slate-400,
+.text-gray-800,
+.text-gray-700,
+.text-gray-600,
+.text-gray-500,
+.text-gray-400,
+.text-zinc-700,
+.text-zinc-600,
+.text-zinc-500,
+.text-zinc-400 {
+  color: #0F172A !important;
+  font-weight: 500;
+}
+
+/* Preserve strikethrough price distinction */
+.line-through,
+del {
+  color: #64748b !important;
+  text-decoration: line-through !important;
+  font-weight: 500 !important;
+}
+
+html.dark .line-through,
+html.dark del {
+  color: #94a3b8 !important;
+}
+
+/* Dark mode text overrides - FORCED CRISP BRIGHT WHITE */
+html.dark .text-slate-800,
+html.dark .text-slate-700,
+html.dark .text-slate-600,
+html.dark .text-slate-500,
+html.dark .text-slate-400,
+html.dark .dark\:text-slate-400,
+html.dark .dark\:text-slate-300,
+html.dark .dark\:text-slate-200,
+html.dark .dark\:text-slate-100,
+html.dark .text-gray-800,
+html.dark .text-gray-700,
+html.dark .text-gray-600,
+html.dark .text-gray-500,
+html.dark .text-gray-400,
+html.dark .dark\:text-gray-400,
+html.dark .dark\:text-gray-300,
+html.dark .dark\:text-gray-200,
+html.dark .dark\:text-gray-100 {
+  color: #FFFFFF !important;
+  font-weight: 500;
+}
+
+/* Table High Contrast Clarity: Every cell is bold, rich, and high visibility */
+table thead th {
+  color: #0F172A !important;
+  font-weight: 800 !important;
+  font-size: 0.8125rem !important; /* 13px */
+  letter-spacing: 0.05em !important;
+}
+
+table tbody td {
+  color: #0F172A !important;
+  font-weight: 600 !important;
+  font-size: 0.8125rem !important; /* 13px */
+  line-height: 1.5 !important;
+}
+
+table tbody td[class*="text-emerald"] {
+  color: #047857 !important;
+  font-weight: 800 !important;
+}
+table tbody td[class*="text-blue"] {
+  color: #1D4ED8 !important;
+  font-weight: 800 !important;
+}
+table tbody td[class*="text-orange"] {
+  color: #C2410C !important;
+  font-weight: 800 !important;
+}
+table tbody td[class*="text-rose"] {
+  color: #BE123C !important;
+  font-weight: 800 !important;
+}
+
+html.dark table thead th {
+  color: #FFFFFF !important;
+}
+
+html.dark table tbody td {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+html.dark table tbody td[class*="text-emerald"] {
+  color: #34D399 !important;
+}
+html.dark table tbody td[class*="text-blue"] {
+  color: #60A5FA !important;
+}
+html.dark table tbody td[class*="text-orange"] {
+  color: #FB923C !important;
+}
+html.dark table tbody td[class*="text-rose"] {
+  color: #FB7185 !important;
 }
 
 /* High Contrast Flat Container Utilities */
@@ -415,6 +590,98 @@ html.dark .flat-card:hover {
   border-radius: 0.125rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.badge-age {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  font-size: 0.6875rem !important;
+  line-height: 1.2 !important;
+  padding: 0.2rem 0.55rem !important;
+  border-radius: 0.125rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+html.dark .badge-age {
+  background-color: #020617 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Piece Count Badges - Ultra High Contrast (White Text on Dark Navy in Light & Dark Mode) */
+.badge-pieces,
+.badge-piece-count {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  font-size: 0.6875rem !important;
+  line-height: 1.2 !important;
+  padding: 0.2rem 0.55rem !important;
+  border-radius: 0.125rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  z-index: 10 !important;
+}
+
+html.dark .badge-pieces,
+html.dark .badge-piece-count {
+  background-color: #020617 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-strong);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--heading-color);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-chip:hover {
+  background-color: var(--border-strong);
+  color: var(--bg-primary);
+}
+
+/* Organization Mode & Quick Pill Filter Buttons */
+.group-mode-btn,
+.quick-pill-btn {
+  border-radius: 0.125rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.group-mode-btn:hover,
+.quick-pill-btn:hover {
+  border-color: var(--brand-accent) !important;
+}
+
+html.dark .group-mode-btn.active,
+html.dark .quick-pill-btn.active {
+  background-color: #F59E0B !important;
+  color: #020617 !important;
+  border-color: #F59E0B !important;
 }
 
 /* ==========================================================================
