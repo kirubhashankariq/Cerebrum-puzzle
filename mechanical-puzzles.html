@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D &amp; Mechanical Puzzles | Sequential Discovery &amp; Metal Burrs | Cerebrum &amp; Co.</title>
+  <meta name="description" content="Discover master-tier 3D mechanical puzzles, cast metal disentanglement keys, Japanese secret trick boxes, rotational polyhedra, and sequential discovery labyrinths." />
+
+  <!-- Pre-Theme Script: Prevent Dark/Light Mode Flash -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('cerebrum_theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.backgroundColor = '#0B0F19';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.style.backgroundColor = '#FFFFFF';
+      }
+      const savedDir = localStorage.getItem('cerebrum_direction') || 'ltr';
+      document.documentElement.setAttribute('dir', savedDir);
+    })();
+  </script>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            brand: {
+              accent: '#D97706',
+              accentHover: '#B45309'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Project High-Contrast Flat Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-theme-primary text-slate-800 dark:text-slate-200 antialiased selection:bg-amber-600 selection:text-white">
+
+  <!-- ==========================================================================
+       GLOBAL NAVBAR
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 bg-theme-primary border-b border-theme shadow-sm transition-colors duration-200">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Brand Logo & Name -->
+        <a href="index.html" class="flex items-center gap-2 sm:gap-3 group focus:outline-none min-w-0" aria-label="Cerebrum &amp; Co. Home">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-black text-base sm:text-xl border border-slate-900 dark:border-amber-400 flex-shrink-0">
+            <svg class="w-4 h-4 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z"/>
+            </svg>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="text-sm sm:text-base xl:text-xl font-black tracking-wider text-slate-900 dark:text-slate-50 uppercase whitespace-nowrap">CEREBRUM</span>
+            <span class="text-[9px] xl:text-[10px] tracking-widest font-semibold uppercase text-slate-500 dark:text-slate-400 -mt-1 hidden xl:block">Puzzle Specialty Store</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation (> 1024px) -->
+        <nav class="hidden lg:flex items-center gap-3 lg:gap-4 xl:gap-7" aria-label="Main Navigation">
+          <!-- Home Dropdown -->
+          <div class="relative" id="home-dropdown-container">
+            <button type="button" id="home-dropdown-btn" class="nav-link-item flex items-center gap-1.5 whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent focus:outline-none" aria-expanded="false" aria-haspopup="true">
+              <span>Home</span>
+              <svg class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div id="home-dropdown-menu" class="hidden absolute top-full left-0 mt-1 w-56 bg-theme-primary border-2 border-theme-strong shadow-2xl py-2 z-50">
+              <a href="index.html" class="flex flex-col px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border-b border-theme text-left">
+                <span class="text-xs font-black uppercase text-slate-900 dark:text-slate-100">Home 1: Signature</span>
+                <span class="text-[10px] text-slate-500 dark:text-slate-400">Classic mechanical burrs &amp; brain challenges</span>
+              </a>
+              <a href="home-2.html" class="flex flex-col px-4 py-2.5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left">
+                <span class="text-xs font-black uppercase text-slate-900 dark:text-slate-100">Home 2: Collector Vault</span>
+                <span class="text-[10px] text-slate-500 dark:text-slate-400">Sequential discovery &amp; rare alloys</span>
+              </a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav-link-item whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent">About</a>
+          <a href="products.html" class="nav-link-item whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent">Products</a>
+          <a href="custom-puzzle.html" class="nav-link-item whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent">Custom Puzzle</a>
+          <a href="contact.html" class="nav-link-item whitespace-nowrap text-xs xl:text-sm font-bold tracking-wide uppercase text-slate-700 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent">Contact</a>
+        </nav>
+
+        <!-- Desktop Utilities & CTA (> 1024px) -->
+        <div class="hidden lg:flex items-center gap-2 xl:gap-3">
+          <button class="rtl-toggle-btn p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Direction (RTL / LTR)" aria-label="Toggle Direction (RTL / LTR)">
+            <svg class="w-5 h-5 rtl-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+          </button>
+          <button class="theme-toggle-btn p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+            <svg class="icon-sun w-5 h-5 hidden text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg class="icon-moon w-5 h-5 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+          <button class="open-cart-btn relative p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Open Puzzle Trunk Cart" aria-label="Open Puzzle Trunk Cart">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="cart-count-badge absolute -top-1.5 -right-1.5 bg-amber-600 text-white font-black text-[10px] w-5 h-5 flex items-center justify-center rounded-full">0</span>
+          </button>
+          <a href="products.html" class="btn-primary !py-2 !px-3.5 xl:!py-2.5 xl:!px-5 text-xs xl:text-sm whitespace-nowrap">
+            <span>Shop Now</span>
+          </a>
+        </div>
+
+        <!-- Mobile Controls (< 1024px) -->
+        <div class="flex items-center gap-1 sm:gap-2 lg:hidden flex-shrink-0">
+          <button class="rtl-toggle-btn p-1.5 sm:p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Direction (RTL / LTR)" aria-label="Toggle Direction (RTL / LTR)">
+            <svg class="w-4 h-4 rtl-flip" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+          </button>
+          <button class="theme-toggle-btn p-1.5 sm:p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+            <svg class="icon-sun w-4 h-4 hidden text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <svg class="icon-moon w-4 h-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </button>
+          <button class="open-cart-btn relative p-1.5 sm:p-2 border border-theme text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" aria-label="Open Cart" title="Open Cart">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="cart-count-badge absolute -top-1.5 -right-1.5 bg-amber-600 text-white font-black text-[10px] w-4.5 h-4.5 min-w-[18px] flex items-center justify-center rounded-full">0</span>
+          </button>
+          <button id="mobile-menu-toggle" class="p-1.5 sm:p-2 border border-theme text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center" aria-label="Open Mobile Menu" title="Open Mobile Menu">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <nav class="bg-theme-secondary border-b border-theme py-3 text-xs" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 font-bold text-slate-600 dark:text-slate-400">
+      <a href="index.html" class="hover:text-amber-600 transition-colors">Home</a>
+      <span class="rtl-flip">&rsaquo;</span>
+      <a href="about.html" class="hover:text-amber-600 transition-colors">Disciplines</a>
+      <span class="rtl-flip">&rsaquo;</span>
+      <span class="text-slate-950 dark:text-white font-black">3D &amp; Mechanical Puzzles</span>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       HERO BANNER: 3D & MECHANICAL PUZZLES
+       ========================================================================== -->
+  <section class="hero-wrapper min-h-[460px] sm:min-h-[520px] flex items-center border-b border-theme relative" style="background-image: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80');">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 w-full">
+      <div class="max-w-3xl mx-auto text-center flex flex-col items-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 border border-amber-600 dark:border-amber-400 mb-4 mx-auto">
+          <span class="w-2 h-2 bg-amber-600 dark:bg-amber-400 flex-shrink-0"></span>
+          <span class="text-xs font-black uppercase tracking-widest text-amber-700 dark:text-amber-300">Discipline 02 • Topological Engineering</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-white drop-shadow-md leading-[1.1] text-center">
+          3D &amp; Mechanical Puzzles: Topological Ingenuity
+        </h1>
+        <p class="text-base sm:text-lg text-slate-100 font-semibold max-w-2xl leading-relaxed mb-8 drop-shadow text-center mx-auto">
+          Cast metal disentanglements, multi-step sequential discovery boxes, rotational polyhedra, and blind internal labyrinths milled to aerospace tolerances. Puzzles solved through spatial deduction, tactile acoustic feedback, and centrifugal equilibrium.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="#mechanical-catalog" class="btn-primary !py-3 !px-6 text-xs sm:text-sm uppercase tracking-wider font-bold">
+            Explore Mechanical Catalog
+          </a>
+          <a href="products.html?difficulty=Master" class="btn-secondary !py-3 !px-6 text-xs sm:text-sm uppercase tracking-wider font-bold">
+            View Level 9-10 Grandmasters
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 1: ENGINEERING ARCHETYPES
+       ========================================================================== -->
+  <section class="py-16 sm:py-20 bg-theme-primary border-b border-theme">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-black uppercase tracking-widest text-amber-600 block mb-2">Kinetic Topology</span>
+        <h2 class="text-2xl sm:text-4xl font-black text-slate-950 dark:text-white mb-3">Four Mechanical Solve Archetypes</h2>
+        <p class="section-subtitle text-sm sm:text-base font-bold text-slate-950 dark:text-white">Each mechanism exercises a distinct neurological problem-solving circuit.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="p-6 bg-theme-secondary border border-theme flat-card flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-black text-lg mb-4">
+              01
+            </div>
+            <h3 class="text-base font-black mb-2 text-slate-950 dark:text-white">Cast Disentanglement</h3>
+            <p class="text-xs text-slate-950 dark:text-white font-semibold leading-relaxed">
+              Die-cast zinc or antique brass pieces that appear permanently interlocked. The solution relies on rotating non-Euclidean curves through singular angular clearances.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-theme text-[10px] font-black uppercase text-amber-600">Pure Spatial Topology</div>
+        </div>
+
+        <div class="p-6 bg-theme-secondary border border-theme flat-card flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-black text-lg mb-4">
+              02
+            </div>
+            <h3 class="text-base font-black mb-2 text-slate-950 dark:text-white">Sequential Discovery</h3>
+            <p class="text-xs text-slate-950 dark:text-white font-semibold leading-relaxed">
+              Puzzles that yield tools during the solve process. Finding the first slide reveals a magnetic pin, which unlocks a blind internal tumbler, which releases the core vault.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-theme text-[10px] font-black uppercase text-amber-600">Multi-Stage Unbinding</div>
+        </div>
+
+        <div class="p-6 bg-theme-secondary border border-theme flat-card flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-black text-lg mb-4">
+              03
+            </div>
+            <h3 class="text-base font-black mb-2 text-slate-950 dark:text-white">Rotational Polyhedra</h3>
+            <p class="text-xs text-slate-950 dark:text-white font-semibold leading-relaxed">
+              From 12-sided Megaminx titans to multi-axis speed pyramids. 120 rare-earth magnets ensure zero misalignments during high-speed permutation solving.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-theme text-[10px] font-black uppercase text-amber-600">Algorithmic Symmetry</div>
+        </div>
+
+        <div class="p-6 bg-theme-secondary border border-theme flat-card flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-black text-lg mb-4">
+              04
+            </div>
+            <h3 class="text-base font-black mb-2 text-slate-950 dark:text-white">Blind Internal Mazes</h3>
+            <p class="text-xs text-slate-950 dark:text-white font-semibold leading-relaxed">
+              A solid brass cylinder encasing an unseen CNC labyrinth. Solvers navigate entirely through tactile resistance, micro-acoustic clicks, and mental cartography.
+            </p>
+          </div>
+          <div class="mt-6 pt-3 border-t border-theme text-[10px] font-black uppercase text-amber-600">Sensory Sensory Mapping</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 2: CURATED 3D & MECHANICAL PUZZLES CATALOG
+       ========================================================================== -->
+  <section id="mechanical-catalog" class="py-16 sm:py-20 bg-theme-secondary border-b border-theme">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-xs font-black uppercase tracking-widest text-amber-600 block mb-2">Mechanical Collection</span>
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-950 dark:text-white">Benchmark Mechanical Puzzles</h2>
+        </div>
+        <p class="section-subtitle max-w-md text-xs sm:text-sm font-bold text-slate-950 dark:text-white mt-4 md:mt-0">
+          Ranked from Level 5 to Level 10 Grandmaster. Certified by the International Puzzle Party (IPP).
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Card 1 -->
+        <article class="flat-card flex flex-col justify-between h-full overflow-hidden">
+          <div class="flex-1 flex flex-col">
+            <div class="relative aspect-square overflow-hidden border-b border-theme bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+              <img src="https://i.pinimg.com/1200x/4e/85/c1/4e85c1df1a1b9aaf77b80c9a7af36a8d.jpg" alt="Hanayama Cast Enigma Key" class="w-full h-full object-cover" />
+              <div class="absolute top-3 left-3 flex flex-col gap-1 items-start">
+                <span class="badge-hard">Hard (Lvl 8)</span>
+                <span class="badge-age">Ages 14+</span>
+              </div>
+              <span class="badge-pieces absolute top-3 right-3">3 Parts</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-xs text-slate-950 dark:text-white uppercase tracking-wider font-black block h-4">Cast Disentanglement</span>
+                <h3 class="text-base sm:text-lg font-black mt-1 mb-2 text-slate-950 dark:text-white min-h-[3.25rem] sm:min-h-[3.5rem] flex items-start leading-snug">Hanayama Cast Enigma Key</h3>
+                <p class="text-xs text-slate-950 dark:text-white font-semibold mb-4 leading-relaxed min-h-[2.5rem] sm:min-h-[2.75rem]">Considered the gold standard worldwide. Three interwoven cast parts requiring zero force to glide apart.</p>
+              </div>
+            </div>
+          </div>
+          <div class="px-5 py-4 border-t border-theme flex items-center justify-between mt-auto bg-slate-50/50 dark:bg-slate-900/30">
+            <span class="text-xl font-black text-slate-950 dark:text-white">$58.00</span>
+            <button onclick="window.addToCartFromCard(this, 'mc-01', 'Hanayama Cast Enigma Key', 58.00, 'Hard')" class="btn-primary !py-2 !px-4 text-xs whitespace-nowrap">
+              Add to Trunk
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="flat-card flex flex-col justify-between h-full overflow-hidden">
+          <div class="flex-1 flex flex-col">
+            <div class="relative aspect-square overflow-hidden border-b border-theme bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+              <img src="https://i.pinimg.com/1200x/cc/bc/8c/ccbc8c54962e70dcfc67a181920f76fc.jpg" alt="Hakone 27-Step Yosegi Box" class="w-full h-full object-cover" />
+              <div class="absolute top-3 left-3 flex flex-col gap-1 items-start">
+                <span class="badge-medium">Medium (Lvl 5)</span>
+                <span class="badge-age">Ages 12+</span>
+              </div>
+              <span class="badge-pieces absolute top-3 right-3">1 Chamber</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-xs text-slate-950 dark:text-white uppercase tracking-wider font-black block h-4">Japanese Secret Box</span>
+                <h3 class="text-base sm:text-lg font-black mt-1 mb-2 text-slate-950 dark:text-white min-h-[3.25rem] sm:min-h-[3.5rem] flex items-start leading-snug">Hakone 27-Step Yosegi Box</h3>
+                <p class="text-xs text-slate-950 dark:text-white font-semibold mb-4 leading-relaxed min-h-[2.5rem] sm:min-h-[2.75rem]">Handcrafted in Kanagawa with marquetry wood inlays. 27 sequential wooden panel movements to open.</p>
+              </div>
+            </div>
+          </div>
+          <div class="px-5 py-4 border-t border-theme flex items-center justify-between mt-auto bg-slate-50/50 dark:bg-slate-900/30">
+            <span class="text-xl font-black text-slate-950 dark:text-white">$125.00</span>
+            <button onclick="window.addToCartFromCard(this, 'mc-02', 'Hakone 27-Step Yosegi Box', 125.00, 'Medium')" class="btn-primary !py-2 !px-4 text-xs whitespace-nowrap">
+              Add to Trunk
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="flat-card flex flex-col justify-between h-full overflow-hidden">
+          <div class="flex-1 flex flex-col">
+            <div class="relative aspect-square overflow-hidden border-b border-theme bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+              <img src="https://i.pinimg.com/1200x/81/c4/4d/81c44dca6eaec4ac3fb97ae83dac3729.jpg" alt="Megaminx Magnetic Pro 12D" class="w-full h-full object-cover" />
+              <div class="absolute top-3 left-3 flex flex-col gap-1 items-start">
+                <span class="badge-master">Master (Lvl 9)</span>
+                <span class="badge-age">Ages 14+</span>
+              </div>
+              <span class="badge-pieces absolute top-3 right-3">12 Parts</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-xs text-slate-950 dark:text-white uppercase tracking-wider font-black block h-4">Speed Polyhedron</span>
+                <h3 class="text-base sm:text-lg font-black mt-1 mb-2 text-slate-950 dark:text-white min-h-[3.25rem] sm:min-h-[3.5rem] flex items-start leading-snug">Megaminx Magnetic Pro 12D</h3>
+                <p class="text-xs text-slate-950 dark:text-white font-semibold mb-4 leading-relaxed min-h-[2.5rem] sm:min-h-[2.75rem]">120 rare-earth magnets ensure snap positioning across all 12 rotating faces. Tournament tuned.</p>
+              </div>
+            </div>
+          </div>
+          <div class="px-5 py-4 border-t border-theme flex items-center justify-between mt-auto bg-slate-50/50 dark:bg-slate-900/30">
+            <span class="text-xl font-black text-slate-950 dark:text-white">$64.00</span>
+            <button onclick="window.addToCartFromCard(this, 'mc-03', 'Megaminx Magnetic Pro 12D', 64.00, 'Master')" class="btn-primary !py-2 !px-4 text-xs whitespace-nowrap">
+              Add to Trunk
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="flat-card flex flex-col justify-between h-full overflow-hidden">
+          <div class="flex-1 flex flex-col">
+            <div class="relative aspect-square overflow-hidden border-b border-theme bg-slate-100 dark:bg-slate-800 flex-shrink-0">
+              <img src="https://i.pinimg.com/1200x/b9/cd/dc/b9cddcc9d1c624f3d64ded84d7245462.jpg" alt="Renaissance Brass Cryptex" class="w-full h-full object-cover" />
+              <div class="absolute top-3 left-3 flex flex-col gap-1 items-start">
+                <span class="badge-medium">Medium (Lvl 6)</span>
+                <span class="badge-age">Ages 12+</span>
+              </div>
+              <span class="badge-pieces absolute top-3 right-3">1 Chamber</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-xs text-slate-950 dark:text-white uppercase tracking-wider font-black block h-4">Cipher Vault</span>
+                <h3 class="text-base sm:text-lg font-black mt-1 mb-2 text-slate-950 dark:text-white min-h-[3.25rem] sm:min-h-[3.5rem] flex items-start leading-snug">Renaissance Brass Cryptex</h3>
+                <p class="text-xs text-slate-950 dark:text-white font-semibold mb-4 leading-relaxed min-h-[2.5rem] sm:min-h-[2.75rem]">Solid antiqued brass with customizable six-letter password tumblers. Conceals an internal chamber.</p>
+              </div>
+            </div>
+          </div>
+          <div class="px-5 py-4 border-t border-theme flex items-center justify-between mt-auto bg-slate-50/50 dark:bg-slate-900/30">
+            <span class="text-xl font-black text-slate-950 dark:text-white">$78.00</span>
+            <button onclick="window.addToCartFromCard(this, 'mc-04', 'Renaissance Brass Cryptex', 78.00, 'Medium')" class="btn-primary !py-2 !px-4 text-xs whitespace-nowrap">
+              Add to Trunk
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 3: CARE & MAINTENANCE PROTOCOL
+       ========================================================================== -->
+  <section class="py-16 sm:py-20 bg-theme-primary border-b border-theme">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-black uppercase tracking-widest text-amber-600 block mb-2">Curator Guidelines</span>
+        <h2 class="text-2xl sm:text-4xl font-black text-slate-950 dark:text-white mb-3">Mechanical Stewardship Protocols</h2>
+        <p class="section-subtitle text-sm sm:text-base font-bold text-slate-950 dark:text-white">Keep high-precision alloy and wooden burrs operating smoothly for generations.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs sm:text-sm">
+        <div class="p-6 bg-theme-secondary border border-theme">
+          <div class="text-amber-600 font-black text-xl mb-2">Rule 01: Zero Force Policy</div>
+          <p class="text-slate-950 dark:text-white font-semibold leading-relaxed">
+            All our mechanisms are cut to 0.02mm tolerance. If a piece does not slide freely, you have not reached the proper topological keyway. Never use pliers or force.
+          </p>
+        </div>
+        <div class="p-6 bg-theme-secondary border border-theme">
+          <div class="text-amber-600 font-black text-xl mb-2">Rule 02: Dry PTFE Lube Only</div>
+          <p class="text-slate-950 dark:text-white font-semibold leading-relaxed">
+            Never apply petroleum oils (WD-40) to brass or wooden mechanisms. Use only micro-fine PTFE dry powder or Renaissance micro-crystalline wax on metal surfaces.
+          </p>
+        </div>
+        <div class="p-6 bg-theme-secondary border border-theme">
+          <div class="text-amber-600 font-black text-xl mb-2">Rule 03: The True Solution</div>
+          <p class="text-slate-950 dark:text-white font-semibold leading-relaxed">
+            A puzzle is only solved when you can completely reverse every step, restoring the mechanism back to its factory-assembled closed state without reference to diagrams.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       GLOBAL FOOTER
+       ========================================================================== -->
+  <footer class="bg-theme-primary border-t border-theme py-16 text-slate-950 dark:text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-3 group mb-4 inline-flex focus:outline-none" aria-label="Return to Cerebrum Home">
+            <div class="w-10 h-10 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-black text-xl border border-slate-900 dark:border-amber-400">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z"/>
+              </svg>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-xl font-extrabold tracking-wider text-slate-950 dark:text-white uppercase">CEREBRUM</span>
+              <span class="text-[10px] tracking-widest font-black uppercase text-slate-950 dark:text-white -mt-1">Puzzle Specialty Store</span>
+            </div>
+          </a>
+          <p class="text-xs leading-relaxed max-w-sm mb-6 text-slate-950 dark:text-white font-semibold">
+            Cerebrum &amp; Co. is the premier destination for serious puzzle solvers, mechanical teaser collectors, and discerning gift seekers worldwide.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-xs font-black uppercase tracking-wider text-slate-950 dark:text-white mb-4">Site Architecture</h4>
+          <ul class="space-y-2 text-xs font-bold text-slate-950 dark:text-white">
+            <li><a href="index.html" class="hover:text-amber-600 transition-colors">Signature Collection</a></li>
+            <li><a href="home-2.html" class="hover:text-amber-600 transition-colors">Collector Vault</a></li>
+            <li><a href="about.html" class="hover:text-amber-600 transition-colors">About Atelier</a></li>
+            <li><a href="products.html" class="hover:text-amber-600 transition-colors">Complete Catalog</a></li>
+            <li><a href="custom-puzzle.html" class="hover:text-amber-600 transition-colors">Custom Puzzle Atelier</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Concierge &amp; Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-black uppercase tracking-wider text-slate-950 dark:text-white mb-4">Specialty Disciplines</h4>
+          <ul class="space-y-2 text-xs font-bold text-slate-950 dark:text-white">
+            <li><a href="jigsaw-puzzles.html" class="hover:text-amber-600 transition-colors">Jigsaw Puzzles</a></li>
+            <li><a href="mechanical-puzzles.html" class="hover:text-amber-600 transition-colors font-bold text-amber-600">3D &amp; Mechanical Puzzles</a></li>
+            <li><a href="brain-teasers.html" class="hover:text-amber-600 transition-colors">Brain Teasers &amp; Logic Games</a></li>
+            <li><a href="board-games.html" class="hover:text-amber-600 transition-colors">Family &amp; Strategy Board Games</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-black uppercase tracking-wider text-slate-950 dark:text-white mb-4">Concierge &amp; Guarantee</h4>
+          <ul class="space-y-2 text-xs font-bold text-slate-950 dark:text-white">
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Lost Piece Replacement</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Cryptic Solution Vault</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Flagship Store Location</a></li>
+            <li><a href="contact.html" class="hover:text-amber-600 transition-colors">Wholesale &amp; Museum Orders</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-theme flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-slate-950 dark:text-white">
+        <p>&copy; 2026 CEREBRUM &amp; CO. All Rights Reserved. Master Puzzle Craftsmen.</p>
+        <div class="flex items-center gap-6">
+          <span class="hover:underline cursor-pointer">Privacy Charter</span>
+          <span class="hover:underline cursor-pointer">Terms of Commission</span>
+          <span class="hover:underline cursor-pointer">Precision Guarantee</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-Over / Full Checkout Modal -->
+  <div id="cart-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="cart-modal-heading">
+    <div class="modal-content !max-w-2xl w-full my-4">
+      <div class="p-6 border-b border-theme flex items-center justify-between bg-theme-secondary">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-slate-900 dark:bg-amber-500 text-white dark:text-slate-950 flex items-center justify-center font-bold">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          </div>
+          <h3 id="cart-modal-heading" class="text-lg font-black text-slate-950 dark:text-white uppercase tracking-wider">Your Puzzle Trunk</h3>
+        </div>
+        <button id="close-cart-btn" class="p-2 border border-theme hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Close Trunk">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="cart-modal-items" class="p-6 divide-y divide-theme max-h-[50vh] overflow-y-auto"></div>
+      <div class="p-6 border-t border-theme bg-theme-secondary flex flex-col gap-4">
+        <div class="flex items-center justify-between text-base font-black text-slate-950 dark:text-white">
+          <span>Subtotal:</span>
+          <span id="cart-modal-subtotal">$0.00</span>
+        </div>
+        <button onclick="window.proceedToCheckout()" class="btn-primary w-full !py-3 text-sm font-bold uppercase tracking-wider">
+          Proceed to Secure Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu-drawer" class="fixed inset-y-0 right-0 z-[1000] w-full max-w-xs bg-theme-primary border-l border-theme p-6 transform translate-x-full transition-transform duration-300 overflow-y-auto hidden">
+    <div class="flex items-center justify-between pb-6 border-b border-theme mb-6">
+      <span class="text-base font-black uppercase text-slate-950 dark:text-white">Navigation</span>
+      <button id="mobile-menu-close" class="p-2 border border-theme" aria-label="Close Mobile Menu">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="flex flex-col space-y-3 font-bold text-sm text-slate-950 dark:text-white">
+      <a href="index.html" class="p-2 border-b border-theme">Home 1: Signature</a>
+      <a href="home-2.html" class="p-2 border-b border-theme">Home 2: Collector Vault</a>
+      <a href="about.html" class="p-2 border-b border-theme">About Atelier</a>
+      <a href="products.html" class="p-2 border-b border-theme">Complete Products</a>
+      <a href="custom-puzzle.html" class="p-2 border-b border-theme">Custom Jigsaw Atelier</a>
+      <a href="contact.html" class="p-2 border-b border-theme">Concierge &amp; Contact</a>
+      <div class="pt-4 border-t border-theme text-xs font-black uppercase text-amber-600">Specialty Disciplines</div>
+      <a href="jigsaw-puzzles.html" class="p-2">🧩 Jigsaw Puzzles</a>
+      <a href="mechanical-puzzles.html" class="p-2 text-amber-600 font-black">⚙️ 3D &amp; Mechanical</a>
+      <a href="brain-teasers.html" class="p-2">🧠 Brain Teasers &amp; Logic</a>
+      <a href="board-games.html" class="p-2">♟️ Family &amp; Strategy Games</a>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-[1001] flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
